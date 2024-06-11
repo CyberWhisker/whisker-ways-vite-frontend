@@ -30,7 +30,7 @@ const Data = [
   },
 ]
 
-export default function Hero() {
+export default function Finder() {
   return (
     <Box
       id="hero"

@@ -8,7 +8,6 @@ function CustomCard(props) {
         className="p-5 flex-grow flex h-full"
         id="image"
         sx={(theme) => ({
-        mt: { xs: 8, sm: 10 },
         alignSelf: 'center',
         width: '100%',
         backgroundImage:

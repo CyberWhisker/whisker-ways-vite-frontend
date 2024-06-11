@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppAppBar from './components/AppAppBar';
-import Hero from './pages/Landing/Hero';
+import {LandingHero , LadingFinder} from './pages/Landing';
 
 const lightTheme = createTheme({
   palette: {
@@ -28,11 +28,11 @@ export default function App() {
     <ThemeProvider theme={themeMode === 'dark' ? darkTheme : lightTheme}>
       <CssBaseline />
       <AppAppBar mode={themeMode} toggleColorMode={toggleColorMode} />
-      <section id='features'>
-        <Hero />
+      <section id='hero'>
+        <LandingHero />
       </section>
-      <section id='testimonials'>
-        <Hero />
+      <section id='finder'>
+        <LadingFinder />
       </section>
     </ThemeProvider>
   );

@@ -95,35 +95,35 @@ function AppAppBar({ mode, toggleColorMode }) {
                 </Typography>
                 <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                     <MenuItem
-                    onClick={() => scrollToSection('features')}
+                    onClick={() => scrollToSection('finder')}
                     sx={{ py: '6px', px: '12px' }}
                     >
                     <Typography variant="body2" color="text.primary">
-                        Features
+                        Finder Tools
                     </Typography>
                     </MenuItem>
                     <MenuItem
-                    onClick={() => scrollToSection('testimonials')}
+                    onClick={() => scrollToSection('partner')}
                     sx={{ py: '6px', px: '12px' }}
                     >
                     <Typography variant="body2" color="text.primary">
-                        Testimonials
+                        Our Partners
                     </Typography>
                     </MenuItem>
                     <MenuItem
-                    onClick={() => scrollToSection('highlights')}
+                    onClick={() => scrollToSection('about')}
                     sx={{ py: '6px', px: '12px' }}
                     >
                     <Typography variant="body2" color="text.primary">
-                        Highlights
+                        About Us
                     </Typography>
                     </MenuItem>
                     <MenuItem
-                    onClick={() => scrollToSection('pricing')}
+                    onClick={() => scrollToSection('contact')}
                     sx={{ py: '6px', px: '12px' }}
                     >
                     <Typography variant="body2" color="text.primary">
-                        Pricing
+                        Contact Us
                     </Typography>
                     </MenuItem>
                     <MenuItem
@@ -131,7 +131,7 @@ function AppAppBar({ mode, toggleColorMode }) {
                     sx={{ py: '6px', px: '12px' }}
                     >
                     <Typography variant="body2" color="text.primary">
-                        FAQ
+                        FAQs
                     </Typography>
                     </MenuItem>
                 </Box>
