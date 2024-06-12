@@ -12,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import ToggleColorMode from './ToggleColorMode';
-import Logo from '../../public/appImg/Logo.png'
+import Logo from '/appImg/Logo.png'
 
 const logoStyle = {
   width: '30px',
@@ -50,6 +50,7 @@ function AppAppBar({ mode, toggleColorMode }) {
           bgcolor: 'transparent',
           backgroundImage: 'none',
           mt: 2,
+          zIndex: 40
         }}
       >
         <Container maxWidth="lg">
@@ -194,17 +195,17 @@ function AppAppBar({ mode, toggleColorMode }) {
                   >
                     <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
                   </Box>
-                  <MenuItem onClick={() => scrollToSection('features')}>
-                    Features
+                  <MenuItem onClick={() => scrollToSection('finder')}>
+                    Finder Tools
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('testimonials')}>
-                    Testimonials
+                  <MenuItem onClick={() => scrollToSection('partner')}>
+                    Our Partners
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('highlights')}>
-                    Highlights
+                  <MenuItem onClick={() => scrollToSection('about')}>
+                    About Us
                   </MenuItem>
-                  <MenuItem onClick={() => scrollToSection('pricing')}>
-                    Pricing
+                  <MenuItem onClick={() => scrollToSection('contact')}>
+                    Contact Us
                   </MenuItem>
                   <MenuItem onClick={() => scrollToSection('faq')}>FAQ</MenuItem>
                   <Divider />

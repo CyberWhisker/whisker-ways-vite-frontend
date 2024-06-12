@@ -6,10 +6,25 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import Login from './pages/Auth/Login.jsx';
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App/>,
+  },
+  {
+    path: "/login",
+    element: <Login/>,
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);

@@ -1,0 +1,6 @@
+export {default as LandingHero} from './Hero'
+export {default as LandingFinder} from './Finder'
+export {default as LandingPartner} from './Partner'
+export {default as LandingAbout} from './About'
+export {default as LandingContact} from './Contact'
+export {default as LandingFaq} from './Faq'

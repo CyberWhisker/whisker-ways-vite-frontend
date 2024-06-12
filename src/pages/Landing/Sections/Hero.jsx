@@ -3,13 +3,12 @@ import { alpha } from '@mui/material';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Pet1 from '../../../public/appImg/WEB_2.png'
-import Pet2 from '../../../public/appImg/WEB_1.png'
-import Pet3 from '../../../public/appImg/WEB_3.png'
-import CustomCard from '../../components/CustomCard';
+import Pet1 from '/appImg/WEB_2.png'
+import Pet2 from '/appImg/WEB_1.png'
+import Pet3 from '/appImg/WEB_3.png'
+import CustomCard from '../../../components/CustomCard';
 
 const Data = [
   {
@@ -30,10 +29,9 @@ const Data = [
   },
 ]
 
-export default function Finder() {
+export default function Hero() {
   return (
     <Box
-      id="hero"
       sx={(theme) => ({
         width: '100%',
         backgroundImage:
@@ -50,13 +48,14 @@ export default function Finder() {
           flexDirection: 'column',
           alignItems: 'center',
           pt: { xs: 14, sm: 20 },
-          pb: { xs: 8, sm: 12 },
         }}
       >
         <div className='opacity-10 flex flex-col items-center -z-20 bg-black'>
           <img src={Pet1} className='absolute top-16'/>
-          <img src={Pet2} className='absolute left-72 -top-16'/>
-          <img src={Pet3} className='absolute right-36 top-44 '/>
+          <div className='hidden lg:block'>
+            <img src={Pet2} className='absolute left-72 -top-16'/>
+            <img src={Pet3} className='absolute right-36 top-44 '/>
+          </div>
         </div>
         <Stack spacing={2} useFlexGap sx={{ width: { xs: '100%', sm: '70%' } }}>
           <Typography
@@ -122,7 +121,7 @@ export default function Finder() {
 
 const CardList = () => {
   return (
-    <div className='grid grid-cols-4 w-full gap-10'>
+    <div className='grid lg:grid-cols-4 w-full gap-10'>
       {Data.map((item, index) => (
         <CustomCard key={index}>
           <div className='space-y-2'>
