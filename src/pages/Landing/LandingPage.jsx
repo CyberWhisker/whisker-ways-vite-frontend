@@ -1,12 +1,12 @@
 // LandingPage.js
 import React from 'react';
-import Master from '../../layouts/Master';
+import {LayoutMaster} from '../../layouts';
 import { CssBaseline } from '@mui/material';
 import { LandingHero, LandingFinder, LandingPartner, LandingAbout, LandingContact, LandingFaq } from './Sections';
 
 const LandingPage = () => {
   return (
-    <Master>
+    <LayoutMaster>
         <CssBaseline />
         <div className='space-y-24'>
             <section id='hero'>
@@ -28,7 +28,7 @@ const LandingPage = () => {
                 <LandingFaq/>
             </section>
         </div>
-    </Master>
+    </LayoutMaster>
   );
 };
 

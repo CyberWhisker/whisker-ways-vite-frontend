@@ -3,7 +3,7 @@ import { Button, Skeleton, TextField } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import CustomCard from '../../../components/CustomCard';
+import {CustomCard} from '../../../components';
 import { Home, Pets, PinDrop, Search } from '@mui/icons-material';
 
 const Data = [

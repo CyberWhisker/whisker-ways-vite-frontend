@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Pet1 from '/appImg/WEB_2.png'
 import Pet2 from '/appImg/WEB_1.png'
 import Pet3 from '/appImg/WEB_3.png'
-import CustomCard from '../../../components/CustomCard';
+import {CustomCard} from '../../../components';
 
 const Data = [
   {

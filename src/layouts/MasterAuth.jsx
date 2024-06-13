@@ -28,9 +28,8 @@ const Master = ({ children }) => {
   return (
     <ThemeProvider theme={themeMode === "dark" ? darkTheme : lightTheme}>
       <CssBaseline />
-      <AppAppBar mode={themeMode} toggleColorMode={toggleColorMode} />
       {children}
-      <div className='mt-10'>
+      <div className=' lg:absolute bottom-0 w-full'>
         <StickyFooter/>
       </div>
     </ThemeProvider>

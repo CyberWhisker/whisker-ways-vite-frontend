@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import CustomCard from '../../../components/CustomCard';
 import { Email, LocationCity, Phone, Web } from '@mui/icons-material';
-import SliderModal from '../../../components/SliderModal';
+import {SliderModal,CustomCard} from '../../../components';
 import StoreMessageForm from '../Forms/StoreMessageForm';
 
 const Data = [

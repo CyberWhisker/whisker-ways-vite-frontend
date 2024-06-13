@@ -2,9 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import CustomBox from '../../../components/CustomBox';
 import PetImg from '/appImg/WEB_5.png'
-import CustomCard from '../../../components/CustomCard';
+import {CustomCard,CustomBox} from '../../../components';
 
 export default function About() {
   return (
