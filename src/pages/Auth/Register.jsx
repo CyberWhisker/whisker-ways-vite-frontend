@@ -10,9 +10,9 @@ function Register() {
     <LayoutMasterAuth>
       <Box
       sx={{
-        height: 700,
+        height: '100%',
         px: {xs: 5, sm: 20},
-        py: {xs: 60, sm: 20}
+        py: {xs: 5, sm: 10}
       }}
       >
         <div className='h-full items-center flex'>

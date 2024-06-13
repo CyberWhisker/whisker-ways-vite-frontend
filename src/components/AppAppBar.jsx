@@ -13,6 +13,8 @@ import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import ToggleColorMode from './ToggleColorMode';
 import Logo from '/appImg/Logo.png'
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Dashboard, Favorite, Map, Search } from '@mui/icons-material';
 
 const logoStyle = {
   width: '30px',
@@ -21,6 +23,9 @@ const logoStyle = {
 };
 
 function AppAppBar({ mode, toggleColorMode }) {
+  const user = 'user';
+  const location = useLocation();
+  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen) => () => {
@@ -91,10 +96,12 @@ function AppAppBar({ mode, toggleColorMode }) {
                     style={logoStyle}
                     alt="logo of sitemark"
                 />
-                <Typography variant="body2" color="text.primary">
-                    <label className='font-extrabold text-xl mr-10'>Whisker Ways</label>
-                </Typography>
-                <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                <Button href='/' sx={{fontSize: 21, fontWeight: 'bold'}}>
+                  Whisker Ways
+                </Button>
+
+                {location.pathname == '/' && (
+                  <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                     <MenuItem
                     onClick={() => scrollToSection('finder')}
                     sx={{ py: '6px', px: '12px' }}
@@ -135,7 +142,48 @@ function AppAppBar({ mode, toggleColorMode }) {
                         FAQs
                     </Typography>
                     </MenuItem>
-                </Box>
+                  </Box>
+                )}
+                {location.pathname != '/' && user == 'user' && (
+                  <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                    <MenuItem
+                    onClick={() => navigate('/user/petfinder')}
+                    sx={{ py: '6px', px: '12px' }}
+                    >
+                    <Typography variant="body2" color="text.primary">
+                      <Search/>&nbsp;
+                      Pet Finder
+                    </Typography>
+                    </MenuItem>
+                    <MenuItem
+                    onClick={(() => navigate('/user/petdating'))}
+                    sx={{ py: '6px', px: '12px' }}
+                    >
+                    <Typography variant="body2" color="text.primary">
+                      <Favorite/>&nbsp;
+                      Pet Dating
+                    </Typography>
+                    </MenuItem>
+                    <MenuItem
+                    onClick={() => navigate('/user/clinic')}
+                    sx={{ py: '6px', px: '12px' }}
+                    >
+                    <Typography variant="body2" color="text.primary">
+                      <Map/>&nbsp;
+                      Vet Clinic Locator
+                    </Typography>
+                    </MenuItem>
+                    <MenuItem
+                    onClick={() => navigate('/forum')}
+                    sx={{ py: '6px', px: '12px' }}
+                    >
+                    <Typography variant="body2" color="text.primary">
+                      <Dashboard/>&nbsp;
+                      Community Forum
+                    </Typography>
+                    </MenuItem>
+                  </Box>
+                )}
             </Box>
             <Box
               sx={{
@@ -175,7 +223,71 @@ function AppAppBar({ mode, toggleColorMode }) {
                 <MenuIcon />
               </Button>
               <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
-                <Box
+                {location.pathname != '/' && user == 'user' && (
+                  <Box
+                  sx={{
+                    minWidth: '60dvw',
+                    p: 2,
+                    backgroundColor: 'background.paper',
+                    flexGrow: 1,
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'end',
+                      flexGrow: 1,
+                    }}
+                  >
+                    <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
+                  </Box>
+                  <MenuItem onClick={() => navigate('/user/petfinder')}>
+                    <Search/>&nbsp;
+                    Finder Tools
+                  </MenuItem>
+                  <MenuItem onClick={() => navigate('/user/petdating')}>
+                    <Favorite/>&nbsp;
+                    Pet Dating
+                  </MenuItem>
+                  <MenuItem onClick={() => navigate('/user/clinic')}>
+                    <Map/>&nbsp;
+                    Vet Clinic Locator
+                  </MenuItem>
+                  <MenuItem onClick={() => navigate('/forum')}>
+                    <Dashboard/>&nbsp;
+                    Forum
+                  </MenuItem>
+                  <Divider />
+                  <MenuItem>
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      component="a"
+                      href="/material-ui/getting-started/templates/sign-up/"
+                      target="_blank"
+                      sx={{ width: '100%' }}
+                    >
+                      Sign up
+                    </Button>
+                  </MenuItem>
+                  <MenuItem>
+                    <Button
+                      color="primary"
+                      variant="outlined"
+                      component="a"
+                      href="/material-ui/getting-started/templates/sign-in/"
+                      target="_blank"
+                      sx={{ width: '100%' }}
+                    >
+                      Sign in
+                    </Button>
+                  </MenuItem>
+                </Box>
+                )}
+
+                {location.pathname == '/' && (
+                  <Box
                   sx={{
                     minWidth: '60dvw',
                     p: 2,
@@ -232,6 +344,8 @@ function AppAppBar({ mode, toggleColorMode }) {
                     </Button>
                   </MenuItem>
                 </Box>
+                )}
+                
               </Drawer>
             </Box>
           </Toolbar>

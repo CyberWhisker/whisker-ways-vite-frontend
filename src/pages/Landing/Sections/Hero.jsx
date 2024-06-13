@@ -99,7 +99,7 @@ export default function Hero() {
             useFlexGap
             sx={{ pt: 2, width: { xs: '100%', sm: 'auto' } }}
           >
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" href='/user/petfinder'>
               <span className='font-bold text-2xl'>
                 Adopt
               </span>

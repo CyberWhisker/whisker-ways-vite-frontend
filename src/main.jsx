@@ -11,6 +11,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import {Login,Register} from './pages/Auth';
+import { UserClinic, UserPetDating, UserPetFinder } from './pages/User';
+import { AdminDashboard, AdminPetList } from './pages/Admin';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,26 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register/>,
+  },
+  {
+    path: "/user/petfinder",
+    element: <UserPetFinder/>,
+  },
+  {
+    path: "/user/petdating",
+    element: <UserPetDating/>,
+  },
+  {
+    path: "/user/clinic",
+    element: <UserClinic/>,
+  },
+  {
+    path: "/admin",
+    element: <AdminDashboard/>,
+  },
+  {
+    path: "/admin/pet",
+    element: <AdminPetList/>,
   },
 ]);
 

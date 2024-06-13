@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import {StickyFooter, AppAppBar} from '../components'
+import {StickyFooter, AppAppBar, StaticTopBar, StaticSideBar} from '../components'
 
 const lightTheme = createTheme({
   palette: {
@@ -16,7 +16,7 @@ const darkTheme = createTheme({
   },
 });
 
-const MasterAuth = ({ children }) => {
+const MasterAdmin = ({ children }) => {
   const [themeMode, setThemeMode] = useState(localStorage.getItem('mode') ? localStorage.getItem('mode') : "dark"); // Default to dark mode
 
   const toggleColorMode = () => {
@@ -28,12 +28,24 @@ const MasterAuth = ({ children }) => {
   return (
     <ThemeProvider theme={themeMode === "dark" ? darkTheme : lightTheme}>
       <CssBaseline />
-      {children}
-      <div className='bottom-0 w-full'>
+      <div className='flex p-5 w-full h-screen gap-10'>
+        <div style={{width: 400}}>
+            <StaticSideBar/>
+        </div>
+        <div className='flex flex-col w-full'>
+            <div className='w-full'>
+                <StaticTopBar mode={themeMode} toggleColorMode={toggleColorMode} />
+                <div className='p-8'>
+                    {children}
+                </div>
+            </div>
+        </div>
+      </div>
+      <div className='mt-10'>
         <StickyFooter/>
       </div>
     </ThemeProvider>
   );
 };
 
-export default MasterAuth;
+export default MasterAdmin;
