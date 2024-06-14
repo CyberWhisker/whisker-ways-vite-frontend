@@ -1,7 +1,7 @@
 import React from 'react'
-import MasterAdmin from '../../../layouts/MasterAdmin'
-import { Box, Typography } from '@mui/material'
-import { CustomCard } from '../../../components'
+import MasterAdmin from '../../../../layouts/MasterAdmin'
+import { Typography } from '@mui/material'
+import { CustomCard } from '../../../../components'
 
 function DashBoard() {
   return (

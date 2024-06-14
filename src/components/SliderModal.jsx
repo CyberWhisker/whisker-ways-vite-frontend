@@ -36,10 +36,10 @@ function SliderModal({ isOpen, toggleModal, children }) {
                         animate={{ x: 0 }}
                         exit={{ x: '100%' }}
                     >
-                        <Box variant='outlined'>
+                        <Box variant='outlined' style={{ height: '100%' }}>
                             <div className='py-5 h-full overflow-hidden flex flex-col'>
-                                <div className='overflow-y-auto px-10'>
-                                    <div className='flex justify-end'>
+                                <div className='overflow-y-auto px-10' style={{ maxHeight: 'calc(100% - 10px)' }}>
+                                    <div className='flex justify-start'>
                                         <Button onClick={toggleModal}>
                                             <Close/>
                                         </Button>

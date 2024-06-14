@@ -28,7 +28,7 @@ const MasterAdmin = ({ children }) => {
   return (
     <ThemeProvider theme={themeMode === "dark" ? darkTheme : lightTheme}>
       <CssBaseline />
-      <div className='flex p-5 w-full h-screen gap-10'>
+      <div className='flex p-5 w-full h-full gap-10'>
         <div style={{width: 400}}>
             <StaticSideBar/>
         </div>

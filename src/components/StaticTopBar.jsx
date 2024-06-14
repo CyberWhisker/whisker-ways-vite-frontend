@@ -8,6 +8,8 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import ToggleColorMode from './ToggleColorMode';
 import Logo from '/appImg/Logo.png'
+import { AccountCircle } from '@mui/icons-material';
+import { IconButton, Menu, MenuItem, Tooltip, Typography } from '@mui/material';
 
 const logoStyle = {
   width: '30px',
@@ -17,9 +19,12 @@ const logoStyle = {
 
 function StaticTopBar({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
-
-  const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
   };
 
   return (
@@ -83,24 +88,62 @@ function StaticTopBar({ mode, toggleColorMode }) {
               }}
             >
               <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
-              <Button
-                color="primary"
-                variant="text"
-                size="small"
-                component="a"
-                href="/login"
-              >
-                Sign in
-              </Button>
-              <Button
-                color="primary"
-                variant="contained"
-                size="small"
-                component="a"
-                href="/register"
-              >
-                Sign up
-              </Button>
+              {false && (
+                <>
+                  <Button
+                    color="primary"
+                    variant="text"
+                    size="small"
+                    component="a"
+                    href="/login"
+                  >
+                    Sign in
+                  </Button>
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    size="small"
+                    component="a"
+                    href="/register"
+                  >
+                    Sign up
+                  </Button>
+                </>
+              )}
+              {true && (
+                <Box sx={{ flexGrow: 0 }}>
+                  <Tooltip title="Open settings">
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <AccountCircle/>
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    sx={{ mt: '27px'}}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    <div className='flex flex-col'>
+                      <Button href='/profile'sx={{width: 100}}>
+                        <Typography textAlign="center">Profile</Typography>
+                      </Button>
+                      <Button href='/login'>
+                        <Typography textAlign="center" color='error'>Logout</Typography>
+                      </Button>
+                    </div>
+                  </Menu>
+                </Box>
+              )}
             </Box>
           </Toolbar>
         </Container>

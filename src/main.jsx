@@ -12,7 +12,9 @@ import {
 } from "react-router-dom";
 import {Login,Register} from './pages/Auth';
 import { UserClinic, UserPetDating, UserPetFinder } from './pages/User';
-import { AdminDashboard, AdminPetList } from './pages/Admin';
+import { AdminClinicList, AdminDashboard, AdminOwnerRequest, AdminPetDating, AdminPetList } from './pages/Admin';
+import Profile from './pages/Profile/Profile.jsx';
+import { VetDashboard, VetDetails } from './pages/Vet';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +48,30 @@ const router = createBrowserRouter([
   {
     path: "/admin/pet",
     element: <AdminPetList/>,
+  },
+  {
+    path: "/admin/dating",
+    element: <AdminPetDating/>,
+  },
+  {
+    path: "/admin/request",
+    element: <AdminOwnerRequest/>,
+  },
+  {
+    path: "/admin/clinic",
+    element: <AdminClinicList/>,
+  },
+  {
+    path: "/profile",
+    element: <Profile/>,
+  },
+  {
+    path: "/vet",
+    element: <VetDashboard/>,
+  },
+  {
+    path: "/vet/details",
+    element: <VetDetails/>,
   },
 ]);
 
