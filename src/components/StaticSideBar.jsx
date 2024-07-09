@@ -7,7 +7,7 @@ import { Dashboard, Favorite, Home, Map, Search } from '@mui/icons-material';
 function StaticSideBar() {
     const location = useLocation();
     const currentLocation = location.pathname;
-    const userType = 'vet';
+    const userType = 'shelter';
   return (
     <div className='' style={{height: '750px'}}>
       <CustomCard>
@@ -66,7 +66,7 @@ function StaticSideBar() {
         {userType == "shelter" && (
           <div className="mb-2 p-4 w-full">
             <Typography className='text-center' variant="h5" color="blue-gray">
-            <label className='font-bold'>Vet Staff</label>
+            <label className='font-bold'>Shelter Staff</label>
             </Typography>
             <Divider sx={{marginTop: 2}}/>
             <div className='space-y-4 mt-5'>
@@ -76,8 +76,8 @@ function StaticSideBar() {
               <Button variant={currentLocation == '/shelter/details' ? 'contained': 'outlined'} sx={{width: '100%'}} href='/shelter/details'>
               Manage Shelter Details
               </Button>
-              <Button variant={currentLocation == '/shelter/request' ? 'contained': 'outlined'} sx={{width: '100%', textAlign: 'center'}} href='/shelter/request'>
-              Manage Adoption Request
+              <Button variant={currentLocation == '/shelter/adoption' ? 'contained': 'outlined'} sx={{width: '100%', textAlign: 'center'}} href='/shelter/adoption'>
+              Adoption Request
               </Button>
               <Button variant={currentLocation == '/shelter/pet' ? 'contained': 'outlined'} sx={{width: '100%', textAlign: 'center'}} href='/shelter/pet'>
               Manage Pet of List

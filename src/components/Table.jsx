@@ -34,6 +34,7 @@ export default function StickyHeadTable({columns, rows, toggleView, toggleEdit, 
                   key={column.id}
                   align={column.align}
                   style={{ minWidth: column.minWidth }}
+                  sx={{textAlign: 'center'}}
                 >
                   {column.label}
                 </TableCell>

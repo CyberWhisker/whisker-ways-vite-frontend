@@ -14,7 +14,9 @@ import {Login,Register} from './pages/Auth';
 import { UserClinic, UserPetDating, UserPetFinder } from './pages/User';
 import { AdminClinicList, AdminDashboard, AdminOwnerRequest, AdminPetDating, AdminPetList } from './pages/Admin';
 import Profile from './pages/Profile/Profile.jsx';
-import { VetDashboard, VetDetails } from './pages/Vet';
+import { VetClinic, VetDashboard, VetDetails } from './pages/Vet';
+import { ShelterAdoption, ShelterDashboard, ShelterDetails, ShelterPet } from './pages/Shelter/index.jsx';
+import { ForumDashboard, ForumMessage } from './pages/Forum/index.jsx';
 
 const router = createBrowserRouter([
   {
@@ -72,6 +74,34 @@ const router = createBrowserRouter([
   {
     path: "/vet/details",
     element: <VetDetails/>,
+  },
+  {
+    path: "/vet/clinic",
+    element: <VetClinic/>,
+  },
+  {
+    path: "/shelter",
+    element: <ShelterDashboard/>,
+  },
+  {
+    path: "/shelter/details",
+    element: <ShelterDetails/>,
+  },
+  {
+    path: "/shelter/adoption",
+    element: <ShelterAdoption/>,
+  },
+  {
+    path: "/shelter/pet",
+    element: <ShelterPet/>,
+  },
+  {
+    path: "/forum",
+    element: <ForumDashboard/>,
+  },
+  {
+    path: "/forum/message",
+    element: <ForumMessage/>,
   },
 ]);
 
