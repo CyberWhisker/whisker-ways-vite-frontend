@@ -6,7 +6,6 @@ import Store from './Forms/Store';
 import View from './Forms/View';
 import Edit from './Forms/Edit';
 import Delete from './Forms/Delete';
-import EditShelter from './Forms/EditShelter';
 
 
 const columns = [

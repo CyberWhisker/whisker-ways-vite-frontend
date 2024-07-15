@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { CustomCard, Modal, SliderModal, Table } from '../../components'
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 import View from './Forms/View';
 import Edit from './Forms/Edit';
 import Delete from './Forms/Delete';
 import MasterAdmin from '../../layouts/MasterAdmin';
-import Master from '../../layouts/Master';
 import EditProfile from './Forms/EditProfile';
 import Store from './Forms/Store';
 
@@ -29,11 +28,6 @@ const columns = [
     label: 'Age',
   },
 ];
-
-function createData(name, code, population, size) {
-  const density = population / size;
-  return { name, code, population, size, density };
-}
 
 const rows = [
   {
