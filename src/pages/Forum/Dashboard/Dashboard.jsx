@@ -4,19 +4,24 @@ import Master from '../../../layouts/Master';
 import { Box, Button, Card, Container, Divider, Grid, MenuItem, Toolbar, Typography } from '@mui/material';
 import { CustomCard } from '../../../components';
 import { Person, PinDrop, Share, ThumbUp } from '@mui/icons-material';
+import CommentModal from './Modals/CommentModal';
+import { Link } from 'react-router-dom';
 
 const PostList = [
   {
+    id: 1,
     name: "First Name Last Name",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, recusandae vel corporis libero numquam culpa sequi velit est ut, commodi at nostrum cum ea. Suscipit quos voluptates accusantium voluptatibus neque.",
     image: "Cat.png"
   },
   {
+    id: 2,
     name: "First Name Last Name",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, recusandae vel corporis libero numquam culpa sequi velit est ut, commodi at nostrum cum ea. Suscipit quos voluptates accusantium voluptatibus neque.",
-    image: "Cat.png"
+    image: null
   },
   {
+    id: 3,
     name: "First Name Last Name",
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, recusandae vel corporis libero numquam culpa sequi velit est ut, commodi at nostrum cum ea. Suscipit quos voluptates accusantium voluptatibus neque.",
     image: "Cat.png"
@@ -55,37 +60,39 @@ function Post() {
               >
                 <Box sx={{ display: "flex", alignItems: "center" }}>
                   <Box
-                    sx={{
+                  sx={{
                       borderRadius: "50%",
                       overflow: "hidden",
                       width: 40,
                       height: 40,
                       marginRight: 2,
-                      textAlign: 'center',
+                      alignItems: 'center',
                       justifyItems: 'center',
-                    }}
+                  }}
                   >
-                    <Person />
+                      <Person sx={{width: '100%', height: '100%'}}/>
                   </Box>
                   <Typography color="primary.main">{item.name}</Typography>
                 </Box>
-                <Button variant='contained'>Message</Button>
+                <Button variant='contained' component={Link} to="/forum/message">Message</Button>
               </Box>
               <Divider sx={{ marginY: 2 }} />
               <Typography>{item.description}</Typography>
-              <Box sx={{ height: 300, overflow: "hidden" }}>
-                <img
-                  src={`/petImg/${item.image}`}
-                  alt="No Image"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-              </Box>
+              {item.image && (
+                <Box sx={{ height: 300, overflow: "hidden" }}>
+                  <img
+                    src={`/petImg/${item.image}`}
+                    alt="No Image"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                </Box>
+              )}
               <Divider sx={{marginY: 2}}/>
-              <Tools/>
+              <Tools data={item}/>
             </Box>
           </CustomCard>
         </Grid>
@@ -94,14 +101,14 @@ function Post() {
   );
 }
 
-function Tools() {
+function Tools({data}) {
   return (
     <Toolbar>
       <MenuItem sx={{borderRadius: "10px"}}>
         <ThumbUp/>
       </MenuItem>
       <MenuItem sx={{borderRadius: "10px"}}>
-        <Share/>
+        <CommentModal data={data}/>
       </MenuItem>
       <MenuItem sx={{borderRadius: "10px"}}>
         <PinDrop/>
@@ -120,12 +127,22 @@ function ChatList() {
     <Card sx={{padding: 2}}>
       <Typography fontWeight="bold" variant='h6'>Chat:</Typography>
       <Divider sx={{marginY: "10px"}}/>
-      {ChatData.map((item) => (
-        <MenuItem sx={{borderRadius: '20px'}}>
-          <Box height="20" borderRadius="100%">
-            <Person/>
+      {ChatData.map((item, index) => (
+        <MenuItem key={index} sx={{borderRadius: '20px'}} component={Link} to="/forum/message">
+          <Box
+          sx={{
+              borderRadius: "50%",
+              overflow: "hidden",
+              width: 30,
+              height: 30,
+              marginRight: 2,
+              alignItems: 'center',
+              justifyItems: 'center',
+          }}
+          >
+              <Person sx={{width: '100%', height: '100%'}}/>
           </Box>
-          <Typography color='primary.main' sx={{marginLeft: 2}}>{item.name}</Typography>
+          <Typography color='primary.main'>{item.name}</Typography>
         </MenuItem>
       ))}
     </Card>

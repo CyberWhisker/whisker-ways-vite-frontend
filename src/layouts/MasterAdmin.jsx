@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import {StickyFooter, AppAppBar, StaticTopBar, StaticSideBar} from '../components'
+import {StickyFooter, AppAppBar, StaticTopBar} from '../components'
+import Sidebar from '../components/Sidebar';
+import { Container, Grid } from '@mui/material';
 
 const lightTheme = createTheme({
   palette: {
@@ -28,22 +30,21 @@ const MasterAdmin = ({ children }) => {
   return (
     <ThemeProvider theme={themeMode === "dark" ? darkTheme : lightTheme}>
       <CssBaseline />
-      <div className='flex p-5 w-full h-full gap-10'>
-        <div style={{width: 400}}>
-            <StaticSideBar/>
-        </div>
-        <div className='flex flex-col w-full'>
-            <div className='w-full'>
-                <StaticTopBar mode={themeMode} toggleColorMode={toggleColorMode} />
-                <div className='p-8'>
-                    {children}
-                </div>
-            </div>
-        </div>
-      </div>
-      <div className='mt-10'>
-        <StickyFooter/>
-      </div>
+      <Grid container>
+        {/* Sidebar Grid Item */}
+        <Grid item xs={12} md={2.5} sx={{ display: { xs: 'none', md: 'block' } }}>
+          <Sidebar />
+        </Grid>
+
+        {/* Main Content Grid Item */}
+        <Grid item xs={12} md={9.5} gap={2} mt={2}>
+          <AppAppBar mode={themeMode} toggleColorMode={toggleColorMode}/>
+          <Container sx={{minHeight: '100vh', mt: 2}}>
+            {children}
+          </Container>
+          <StickyFooter />
+        </Grid>
+      </Grid>
     </ThemeProvider>
   );
 };

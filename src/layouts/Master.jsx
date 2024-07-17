@@ -7,6 +7,9 @@ import {StickyFooter, AppAppBar} from '../components'
 const lightTheme = createTheme({
   palette: {
     mode: 'light',
+    default: {
+      main: 'dark'
+    }, 
   },
 });
 
