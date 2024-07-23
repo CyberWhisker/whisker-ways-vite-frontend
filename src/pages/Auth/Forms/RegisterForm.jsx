@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Container, TextField, Typography } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 function RegisterForm() {
     const [submitted, setSubmitted] = useState(false);
@@ -73,7 +74,7 @@ function RegisterForm() {
             </form>
             <div className='flex justify-end'>
                 <Typography>
-                    <Button href='/login'>I have an account</Button>
+                    <Button component={Link} to='/login'>I have an account</Button>
                 </Typography>
             </div>
             <Button variant='outlined' sx={{ width: '100%' }}>Sign in with Google</Button>

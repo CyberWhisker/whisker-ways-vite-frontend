@@ -8,6 +8,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import {
   createBrowserRouter,
+  redirect,
   RouterProvider,
 } from "react-router-dom";
 import {Login,Register} from './pages/Auth';
@@ -18,6 +19,9 @@ import { VetClinic, VetDashboard, VetDetails } from './pages/Vet';
 import { ShelterAdoption, ShelterDashboard, ShelterDetails, ShelterPet } from './pages/Shelter/index.jsx';
 import { ForumDashboard, ForumMessage } from './pages/Forum/index.jsx';
 
+// Retrieve user object from localStorage
+const userType = localStorage.getItem("userType");
+console.log(userType);
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,64 +48,64 @@ const router = createBrowserRouter([
     element: <UserClinic/>,
   },
   {
-    path: "/admin",
-    element: <AdminDashboard/>,
+    path: '/admin',
+    element: userType === 'admin' ? <AdminDashboard /> : <Login/>,
   },
   {
-    path: "/admin/pet",
-    element: <AdminPetList/>,
+    path: '/admin/pet',
+    element: userType === 'admin' ? <AdminPetList /> : <Login/>,
   },
   {
-    path: "/admin/dating",
-    element: <AdminPetDating/>,
+    path: '/admin/dating',
+    element: userType === 'admin' ? <AdminPetDating /> : <Login/>,
   },
   {
-    path: "/admin/request",
-    element: <AdminOwnerRequest/>,
+    path: '/admin/request',
+    element: userType === 'admin' ? <AdminOwnerRequest /> : <Login/>,
   },
   {
-    path: "/admin/clinic",
-    element: <AdminClinicList/>,
+    path: '/admin/clinic',
+    element: userType === 'admin' ? <AdminClinicList /> : <Login/>,
   },
   {
-    path: "/profile",
-    element: <Profile/>,
+    path: '/vet',
+    element: userType === 'vet' ? <VetDashboard /> : <Login/>,
   },
   {
-    path: "/vet",
-    element: <VetDashboard/>,
+    path: '/vet/details',
+    element: userType === 'vet' ? <VetDetails /> : <Login/>,
   },
   {
-    path: "/vet/details",
-    element: <VetDetails/>,
+    path: '/vet/clinic',
+    element: userType === 'vet' ? <VetClinic /> : <Login/>,
   },
   {
-    path: "/vet/clinic",
-    element: <VetClinic/>,
+    path: '/shelter',
+    element: userType === 'shelter' ? <ShelterDashboard /> : <Login/>,
   },
   {
-    path: "/shelter",
-    element: <ShelterDashboard/>,
+    path: '/shelter/details',
+    element: userType === 'shelter' ? <ShelterDetails /> : <Login/>,
   },
   {
-    path: "/shelter/details",
-    element: <ShelterDetails/>,
+    path: '/shelter/adoption',
+    element: userType === 'shelter' ? <ShelterAdoption /> : <Login/>,
   },
   {
-    path: "/shelter/adoption",
-    element: <ShelterAdoption/>,
+    path: '/shelter/pet',
+    element: userType === 'shelter' ? <ShelterPet /> : <Login/>,
   },
   {
-    path: "/shelter/pet",
-    element: <ShelterPet/>,
+    path: '/forum',
+    element: userType ? <ForumDashboard /> : <Login/>, // Example of restricting access to Forum if userType is not defined
   },
   {
-    path: "/forum",
-    element: <ForumDashboard/>,
+    path: '/forum/message',
+    element: userType ? <ForumMessage /> : <Login/>, // Example of restricting access to Forum Message if userType is not defined
   },
   {
-    path: "/forum/message",
-    element: <ForumMessage/>,
+    path: '/profile',
+    element: <Profile />,
   },
 ]);
 

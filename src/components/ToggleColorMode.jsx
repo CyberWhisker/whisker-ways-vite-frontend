@@ -7,7 +7,14 @@ import Button from '@mui/material/Button';
 import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
 import ModeNightRoundedIcon from '@mui/icons-material/ModeNightRounded';
 
-function ToggleColorMode({ mode, toggleColorMode }) {
+function ToggleColorMode() {
+  const [themeMode, setThemeMode] = React.useState(localStorage.getItem('mode') ? localStorage.getItem('mode') : "dark"); // Default to dark mode
+  const toggleColorMode = () => {
+    const newThemeMode = themeMode === 'dark' ? 'light' : 'dark';
+    localStorage.setItem("mode", newThemeMode)
+    setThemeMode(newThemeMode);
+    window.location.reload();
+  };
   return (
     <Box sx={{ maxWidth: '32px' }}>
       <Button
@@ -17,7 +24,7 @@ function ToggleColorMode({ mode, toggleColorMode }) {
         aria-label="button to toggle theme"
         sx={{ minWidth: '32px', height: '32px', p: '4px' }}
       >
-        {mode === 'dark' ? (
+        {themeMode === 'dark' ? (
           <WbSunnyRoundedIcon fontSize="small" />
         ) : (
           <ModeNightRoundedIcon fontSize="small" />
@@ -26,10 +33,5 @@ function ToggleColorMode({ mode, toggleColorMode }) {
     </Box>
   );
 }
-
-ToggleColorMode.propTypes = {
-  mode: PropTypes.oneOf(['dark', 'light']).isRequired,
-  toggleColorMode: PropTypes.func.isRequired,
-};
 
 export default ToggleColorMode;

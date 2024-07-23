@@ -1,8 +1,8 @@
 // Layout.js
-import React, { useState } from 'react';
+import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import {StickyFooter, AppAppBar} from '../components'
+import {StickyFooter} from '../components'
 
 const lightTheme = createTheme({
   palette: {
@@ -17,13 +17,7 @@ const darkTheme = createTheme({
 });
 
 const MasterAuth = ({ children }) => {
-  const [themeMode, setThemeMode] = useState(localStorage.getItem('mode') ? localStorage.getItem('mode') : "dark"); // Default to dark mode
-
-  const toggleColorMode = () => {
-    const newThemeMode = themeMode === 'dark' ? 'light' : 'dark';
-    localStorage.setItem("mode", newThemeMode)
-    setThemeMode(newThemeMode);
-  };
+  const themeMode = localStorage.getItem('mode') ? localStorage.getItem('mode') : "dark"; // Default to dark mode
 
   return (
     <ThemeProvider theme={themeMode === "dark" ? darkTheme : lightTheme}>

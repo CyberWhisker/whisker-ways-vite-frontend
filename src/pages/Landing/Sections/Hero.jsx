@@ -9,6 +9,7 @@ import Pet1 from '/appImg/WEB_2.png'
 import Pet2 from '/appImg/WEB_1.png'
 import Pet3 from '/appImg/WEB_3.png'
 import {CustomCard} from '../../../components';
+import { Link } from 'react-router-dom';
 
 const Data = [
   {
@@ -99,7 +100,7 @@ export default function Hero() {
             useFlexGap
             sx={{ pt: 2, width: { xs: '100%', sm: 'auto' } }}
           >
-            <Button variant="contained" color="primary" href='/user/petfinder'>
+            <Button variant="contained" color="primary" component={Link} to='/user/petfinder'>
               <span className='font-bold text-2xl'>
                 Adopt
               </span>

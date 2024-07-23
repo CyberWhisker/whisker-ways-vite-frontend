@@ -20,16 +20,15 @@ const logoStyle = {
   cursor: 'pointer',
 };
 
-function AppAppBar() {
+function AppAppBarRelative() {
   const location = useLocation();
   return (
     <AppBar
-      position="fixed"
+      position="relative"
       sx={{
         boxShadow: 0,
         bgcolor: 'transparent',
         backgroundImage: 'none',
-        mt: 2,
         zIndex: 40
       }}
     >
@@ -139,4 +138,9 @@ function MenuDrawer() {
   )
 }
 
-export default AppAppBar;
+AppAppBarRelative.propTypes = {
+  mode: PropTypes.oneOf(['dark', 'light']).isRequired,
+  toggleColorMode: PropTypes.func.isRequired,
+};
+
+export default AppAppBarRelative;
