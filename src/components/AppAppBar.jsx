@@ -66,7 +66,7 @@ function AppAppBar() {
             {/* Logo Here */}
             <Landmark/>          
             {/* Navigation Here */}
-            {(location.pathname === '/' || location.pathname.startsWith("/user")) && (
+            {(location.pathname === '/' || location.pathname.startsWith("/user") || localStorage.getItem("userType") == "user") && (
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                 <Navlist />
               </Box>

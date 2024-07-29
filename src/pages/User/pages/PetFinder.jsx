@@ -76,15 +76,16 @@ function PetFinder() {
   return (
     <Master>
       <Box
-      sx={(theme) => ({
-        width: '100%',
-        backgroundImage:
-          theme.palette.mode === 'light'
-            ? `linear-gradient(#FFF, ${alpha('#CEE5FD', 0.0)})`
-            : `linear-gradient(#02294F, ${alpha('#090E10', 0.0)})`,
-        backgroundSize: '100% 20%',
-        backgroundRepeat: 'no-repeat',
-      })}>
+        sx={(theme) => ({
+          width: '100%',
+          backgroundImage:
+            theme.palette.mode === 'light'
+              ? `linear-gradient(#FFF, ${alpha('#CEE5FD', 0.0)})`
+              : `linear-gradient(#02294F, ${alpha('#090E10', 0.0)})`,
+          backgroundSize: '100% 20%',
+          backgroundRepeat: 'no-repeat',
+        })}
+      >
         <Container
         className='space-y-10'
           sx={{
@@ -111,7 +112,7 @@ function PetList() {
     <div className='grid lg:grid-cols-4 gap-5'>
       {Data.map((item, index) => {
         return(
-          <div className='hover:-translate-y-4 transition'>
+          <div className='hover:-translate-y-4 transition' key={index}>
             <CustomCard key={index}>
               <div className='space-y-2'>
                 <img src={'/petImg/dog.png'} alt='PetImg'/>

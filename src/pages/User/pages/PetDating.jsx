@@ -111,7 +111,7 @@ function PetList() {
     <div className='grid lg:grid-cols-4 gap-5'>
       {Data.map((item, index) => {
         return(
-          <div className='hover:-translate-y-4 transition'>
+          <div className='hover:-translate-y-4 transition' key={index}>
             <CustomCard key={index}>
               <div className='space-y-2'>
                 <img src={'/petImg/dog.png'} alt='PetImg'/>

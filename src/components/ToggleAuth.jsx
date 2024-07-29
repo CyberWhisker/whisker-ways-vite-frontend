@@ -1,4 +1,4 @@
-import { Button, MenuItem, Typography } from '@mui/material'
+import { Button } from '@mui/material'
 import React from 'react'
 import { Link } from 'react-router-dom';
 
@@ -37,9 +37,7 @@ function ToggleAuth() {
           onClick={handleLogout}
           variant="contained"
           size="small"
-          sx={{
-            bgcolor: '#e53935'
-          }}
+          color="error"
           >
             Logout
           </Button>

@@ -1,10 +1,9 @@
 import * as React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
-import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { Facebook, Instagram, X, YouTube } from '@mui/icons-material';
 import { Card } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export default function StickyFooter() {
   return (
@@ -19,10 +18,8 @@ export default function StickyFooter() {
       <Container maxWidth="lg">
         <div className='grid lg:grid-cols-4 justify-between gap-5'>
           <div>
-            <Typography variant="body1">
-              <label className='text-xl font-bold'>
-                Whisker Way
-              </label>
+            <Typography variant='h5' fontWeight={"bold"} sx={{cursor: 'pointer'}} component={Link} to={'/'}>
+              Whisker Way
             </Typography>
             <Typography>
                 <label>

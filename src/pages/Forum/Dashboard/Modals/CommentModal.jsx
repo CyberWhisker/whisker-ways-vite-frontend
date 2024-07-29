@@ -1,13 +1,18 @@
-import * as React from 'react';
+
 import MediumModal from '../../../../components/MediumModal';
-import { KeyboardArrowDown, Padding, Person, Share, TableBarSharp } from '@mui/icons-material';
-import { Box, Divider, Typography, TextField, Button, Grid, AppBar, Tabs, Paper } from '@mui/material';
+import { KeyboardArrowDown, Person, Share } from '@mui/icons-material';
+import { Box, Divider, Typography, TextField, Button, Grid, Paper } from '@mui/material';
+import React, { useState } from 'react';
 
 export default function CommentModal({data}) {
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const handleToggle = () => {
+        console.log(open);
+        setOpen(true)
+    }
     return (
         <div>
-            <Share onClick={() => setOpen(true)}/>
+            <Share onClick={handleToggle}/>
             <MediumModal isOpen={open} setOpen={setOpen}>
                 <Box
                 sx={{

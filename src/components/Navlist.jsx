@@ -1,5 +1,5 @@
 import { Dashboard, Favorite, Map, Search } from '@mui/icons-material';
-import { Box, Button, Divider, MenuItem, Typography } from '@mui/material'
+import { Button, Divider, MenuItem, Typography } from '@mui/material'
 import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
@@ -67,20 +67,28 @@ function NavUser() {
     return (
         <React.Fragment>
             <MenuItem onClick={() => navigate('/user/petfinder')}>
-                <Search/>&nbsp;
-                Finder Tools
+                <Typography color="primary.main">
+                    <Search/>&nbsp;
+                    Finder Tools
+                </Typography>
             </MenuItem>
             <MenuItem onClick={() => navigate('/user/petdating')}>
-                <Favorite/>&nbsp;
-                Pet Dating
+                <Typography color="primary.main">
+                    <Favorite/>&nbsp;
+                    Pet Dating
+                </Typography>
             </MenuItem>
             <MenuItem onClick={() => navigate('/user/clinic')}>
-                <Map/>&nbsp;
-                Vet Clinic Locator
+                <Typography color="primary.main">
+                    <Map/>&nbsp;
+                    Vet Clinic Locator
+                </Typography>
             </MenuItem>
-            <MenuItem onClick={() => navigate('/forum')}>
-                <Dashboard/>&nbsp;
-                Forum
+            <MenuItem onClick={() => navigate('/user/forum')}>
+                <Typography color="primary.main">
+                    <Dashboard/>&nbsp;
+                    Forum
+                </Typography>
             </MenuItem>
         </React.Fragment>
     )
@@ -107,7 +115,7 @@ function NavAdmin() {
             <Button variant={location.pathname == '/admin/clinics' ? 'contained': 'outlined'} sx={{width: '100%'}} component={Link} to="/admin/clinics">
                 List of Vet Clinics
             </Button>
-            <Button variant={location.pathname == '/forum' ? 'contained': 'outlined'} sx={{width: '100%'}} component={Link} to="/forum">
+            <Button variant={location.pathname == '/admin/forum' ? 'contained': 'outlined'} sx={{width: '100%'}} component={Link} to="/admin/forum">
                 Forum Management
             </Button>
         </React.Fragment>
@@ -132,7 +140,7 @@ function NavVet() {
             <Button variant={location.pathname == '/vet/clinic' ? 'contained': 'outlined'} sx={{width: '100%', textAlign: 'center'}} component={Link} to="/vet/clinic">
                 Verify Veterinary Clinic
             </Button>
-            <Button variant={location.pathname == '/forum' ? 'contained': 'outlined'} sx={{width: '100%'}} component={Link} to="/forum">
+            <Button variant={location.pathname == '/vet/forum' ? 'contained': 'outlined'} sx={{width: '100%'}} component={Link} to="/vet/forum">
                 Forum Management
             </Button>
         </React.Fragment>
@@ -159,7 +167,7 @@ function NavShelter() {
             <Button variant={location.pathname == '/shelter/pet' ? 'contained': 'outlined'} sx={{width: '100%', textAlign: 'center'}} component={Link} to="/shelter/pet">
                 Manage Pet of List
             </Button>
-            <Button variant={location.pathname == '/forum' ? 'contained': 'outlined'} sx={{width: '100%'}} component={Link} to="/forum">
+            <Button variant={location.pathname == '/shelter/forum' ? 'contained': 'outlined'} sx={{width: '100%'}} component={Link} to="/shelter/forum">
                 Forum Management
             </Button>
         </React.Fragment>

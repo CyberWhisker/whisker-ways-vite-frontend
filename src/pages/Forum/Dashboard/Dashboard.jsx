@@ -2,10 +2,10 @@ import React from 'react';
 import MasterAdmin from '../../../layouts/MasterAdmin';
 import Master from '../../../layouts/Master';
 import { Box, Button, Card, Container, Divider, Grid, MenuItem, Toolbar, Typography } from '@mui/material';
-import { CustomCard } from '../../../components';
-import { Person, PinDrop, Share, ThumbUp } from '@mui/icons-material';
+import { ChatList, CustomCard } from '../../../components';
+import { Person, PinDrop, ThumbUp } from '@mui/icons-material';
 import CommentModal from './Modals/CommentModal';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const PostList = [
   {
@@ -29,23 +29,43 @@ const PostList = [
 ];
 
 function Dashboard() {
-  return (
-    <Master>
-      <Container sx={{ mt: { sm: 20, xs: 15 } }}>
-        <Grid container spacing={2}>
-          <Grid item lg={9}>
-            <Post />
+  if (localStorage.getItem("userType") == "user" || localStorage.getItem("userType") == "null") {
+    return (
+      <Master>
+        <Container sx={{ mt: { sm: 20, xs: 15 } }}>
+          <Grid container spacing={2}>
+            <Grid item lg={9} xs={12}>
+              <Post />
+            </Grid>
+            <Grid item lg={3} sx={{display: {xs: 'none', md: 'block'}}}>
+              <ChatList/>
+            </Grid>
           </Grid>
-          <Grid item lg={3}>
-            <ChatList/>
+        </Container>
+      </Master>
+    );
+  } else {
+    return (
+      <MasterAdmin>
+        <Container sx={{ my: { sm: 5, xs: 15 } }}>
+          <Grid container spacing={2}>
+            <Grid item lg={9}>
+              <Post />
+            </Grid>
+            <Grid item lg={3}>
+              <ChatList/>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
-    </Master>
-  );
+        </Container>
+      </MasterAdmin>
+    );
+  }
 }
 
 function Post() {
+  const location = useLocation();
+  const pathName = location.pathname
+  const currentPath = pathName.split("/")
   return (
     <Grid container spacing={2}>
       {PostList.map((item, index) => (
@@ -74,7 +94,7 @@ function Post() {
                   </Box>
                   <Typography color="primary.main">{item.name}</Typography>
                 </Box>
-                <Button variant='contained' component={Link} to="/forum/message">Message</Button>
+                <Button variant='contained' component={Link} to={`/${currentPath[1]}/forum/message`}>Message</Button>
               </Box>
               <Divider sx={{ marginY: 2 }} />
               <Typography>{item.description}</Typography>
@@ -114,38 +134,6 @@ function Tools({data}) {
         <PinDrop/>
       </MenuItem>
     </Toolbar>
-  )
-}
-
-function ChatList() {
-  const ChatData = [
-    {
-      name: "Chat Name"
-    }
-  ]
-  return (
-    <Card sx={{padding: 2}}>
-      <Typography fontWeight="bold" variant='h6'>Chat:</Typography>
-      <Divider sx={{marginY: "10px"}}/>
-      {ChatData.map((item, index) => (
-        <MenuItem key={index} sx={{borderRadius: '20px'}} component={Link} to="/forum/message">
-          <Box
-          sx={{
-              borderRadius: "50%",
-              overflow: "hidden",
-              width: 30,
-              height: 30,
-              marginRight: 2,
-              alignItems: 'center',
-              justifyItems: 'center',
-          }}
-          >
-              <Person sx={{width: '100%', height: '100%'}}/>
-          </Box>
-          <Typography color='primary.main'>{item.name}</Typography>
-        </MenuItem>
-      ))}
-    </Card>
   )
 }
 

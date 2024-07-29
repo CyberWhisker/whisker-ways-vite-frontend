@@ -3,6 +3,7 @@ import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import {StickyFooter, AppAppBar} from '../components'
+import { Box } from '@mui/material';
 
 const lightTheme = createTheme({
   palette: {
@@ -26,10 +27,12 @@ const Master = ({ children }) => {
     <ThemeProvider theme={themeMode === "dark" ? darkTheme : lightTheme}>
       <CssBaseline />
       <AppAppBar />
-      {children}
-      <div className='mt-10'>
+      <Box >
+        {children}
+      </Box>
+      <Box sx={{marginTop: 5}}>
         <StickyFooter/>
-      </div>
+      </Box>
     </ThemeProvider>
   );
 };

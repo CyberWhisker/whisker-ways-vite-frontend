@@ -21,7 +21,6 @@ import { ForumDashboard, ForumMessage } from './pages/Forum/index.jsx';
 
 // Retrieve user object from localStorage
 const userType = localStorage.getItem("userType");
-console.log(userType);
 const router = createBrowserRouter([
   {
     path: "/",
@@ -96,16 +95,40 @@ const router = createBrowserRouter([
     element: userType === 'shelter' ? <ShelterPet /> : <Login/>,
   },
   {
-    path: '/forum',
-    element: userType ? <ForumDashboard /> : <Login/>, // Example of restricting access to Forum if userType is not defined
-  },
-  {
-    path: '/forum/message',
-    element: userType ? <ForumMessage /> : <Login/>, // Example of restricting access to Forum Message if userType is not defined
-  },
-  {
     path: '/profile',
     element: <Profile />,
+  },
+  {
+    path: '/user/forum',
+    element: userType != "null" ? <ForumDashboard /> : <Login/>, 
+  },
+  {
+    path: '/admin/forum',
+    element: userType != "null" ? <ForumDashboard /> : <Login/>, 
+  },
+  {
+    path: '/shelter/forum',
+    element: userType != "null" ? <ForumDashboard /> : <Login/>, 
+  },
+  {
+    path: '/vet/forum',
+    element: userType != "null" ? <ForumDashboard /> : <Login/>, 
+  },
+  {
+    path: '/user/forum/message',
+    element: userType != "null" ? <ForumMessage /> : <Login/>, 
+  },
+  {
+    path: '/admin/forum/message',
+    element: userType != "null" ? <ForumMessage /> : <Login/>, 
+  },
+  {
+    path: '/vet/forum/message',
+    element: userType != "null" ? <ForumMessage /> : <Login/>, 
+  },
+  {
+    path: '/shelter/forum/message',
+    element: userType != "null" ? <ForumMessage /> : <Login/>, 
   },
 ]);
 
