@@ -99,7 +99,7 @@ function ContactList({toggleModal}) {
     return(
         <div className='grid lg:grid-cols-2 gap-10 w-full'>
             {Data.map((item, index) => (
-                <div onClick={toggleModal} className='cursor-pointer hover:-translate-y-4 transition'  key={index}>
+                <div onClick={toggleModal} className='cursor-pointer'  key={index}>
                     <CustomCard>
                         <div className='space-y-6'>
                             <Typography><label className='font-bold text-xl'>{item.title}</label></Typography>

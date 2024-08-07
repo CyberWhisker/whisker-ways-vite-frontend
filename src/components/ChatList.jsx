@@ -10,7 +10,7 @@ function ChatList() {
 
     const ChatData = [
         {
-        name: "Chat Name"
+            name: "Chat Name"
         }
     ]
     return (
@@ -18,7 +18,7 @@ function ChatList() {
             <Typography fontWeight="bold" variant='h6'>Chats:</Typography>
             <Divider sx={{marginY: "10px"}}/>
             {ChatData.map((item, index) => (
-                <MenuItem key={index} sx={{borderRadius: '20px'}} component={Link} to={`/${currentPath[1]}/forum/message`}>
+                <MenuItem key={index} sx={{borderRadius: '20px'}} component={Link} to={`/forum/message`}>
                     <Box
                     sx={{
                         borderRadius: '50%',

@@ -1,6 +1,6 @@
 import React from 'react'
 import Master from '../../../layouts/Master'
-import { Box, Button, Container, Divider, Stack, Typography, alpha } from '@mui/material'
+import { Box, Button, Container, Divider, Grid, Stack, Typography, alpha } from '@mui/material'
 import { CustomCard } from '../../../components'
 import { ArrowRight } from '@mui/icons-material'
 
@@ -109,27 +109,29 @@ function PetFinder() {
 
 function PetList() {
   return (
-    <div className='grid lg:grid-cols-4 gap-5'>
+    <Grid container spacing={2}>
       {Data.map((item, index) => {
         return(
-          <div className='hover:-translate-y-4 transition' key={index}>
+          <Grid item xs={6} md={3} key={index}>
             <CustomCard key={index}>
-              <div className='space-y-2'>
+              <Box sx={{display: 'flex', flexDirection: 'column', gap: 1}}>
                 <img src={'/petImg/dog.png'} alt='PetImg'/>
                 <Typography sx={{fontWeight: 'bold'}}>{item.name}</Typography>
                 <Typography>{item.gender}, {item.species}</Typography>
                 <Divider/>
-                <Typography>{item.species}</Typography>
-                <Typography>{item.location}</Typography>
-                <div className='flex justify-end'>
-                  <Button variant='outlined'>Pet Details <ArrowRight/></Button>
-                </div>
-              </div>
+                <Box sx={{display: {xs: 'none', md: 'block'}}}>
+                  <Typography>{item.species}</Typography>
+                  <Typography>{item.location}</Typography>
+                </Box>
+                <Box sx={{display: 'flex', justifyContent:'end'}}>
+                  <Button variant='outlined'><Typography sx={{display: {xs: 'none', md: 'block'}}}>Pet</Typography> Details <ArrowRight/></Button>
+                </Box>
+              </Box>
             </CustomCard>
-          </div>
+          </Grid>
         )
       })}
-    </div>
+    </Grid>
   )
 }
 

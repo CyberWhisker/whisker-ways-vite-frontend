@@ -9,32 +9,35 @@ function Message() {
   if (localStorage.getItem("userType") == "user" || localStorage.getItem("userType") == "null") {
     return (
       <Master>
-        <Container 
-        sx={{
-          marginTop: {xs: 12, md: 15},
-          height: "70vh"
-        }}>
-          <Grid container spacing={3} sx={{height: "100%"}}>
-            <Grid item xs={3}>
-              <ChatList/>
-            </Grid>
-            <Grid item xs={9}>
-              <ChatBox/>
-            </Grid>
+        <Grid container spacing={3} sx={{height: "100%"}}>
+          <Grid item xs={3}>
+            <ChatList/>
           </Grid>
-        </Container>       
+          <Grid item xs={9}>
+            <ChatBox/>
+          </Grid>
+        </Grid>   
       </Master>
     )
   } else {
     return (
-      <MasterAdmin>Message</MasterAdmin>
+      <MasterAdmin>
+        <Grid container spacing={3} sx={{height: "100%"}}>
+          <Grid item xs={3} sx={{display: {xs:'none', md: 'block'}}}>
+            <ChatList/>
+          </Grid>
+          <Grid item xs={12} md={9} >
+            <ChatBox/>
+          </Grid>
+        </Grid>
+      </MasterAdmin>
     )
   }
 }
 
 function ChatBox() {
   return (
-    <Card sx={{ boxShadow: 5, height: "70vh", display: 'flex', flexDirection: 'column' }}>
+    <Card sx={{ boxShadow: 5, height: "68vh", display: 'flex', flexDirection: 'column' }}>
       <Box sx={{ padding: 2, display: 'flex', alignItems: 'center' }}>
         <Box
           sx={{

@@ -4,7 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import {StickyFooter, AppAppBarRelative} from '../components'
 import Sidebar from '../components/Sidebar';
-import { Container, Grid } from '@mui/material';
+import { Box, Container, Grid } from '@mui/material';
 
 const lightTheme = createTheme({
   palette: {
@@ -24,16 +24,16 @@ const MasterAdmin = ({ children }) => {
   return (
     <ThemeProvider theme={themeMode === "dark" ? darkTheme : lightTheme}>
       <CssBaseline />
-      <Grid container>
+      <Grid container sx={{minHeight: '100vh'}}>
         {/* Sidebar Grid Item */}
         <Grid item xs={12} md={2.5} sx={{ display: { xs: 'none', md: 'block' } }}>
           <Sidebar />
         </Grid>
 
         {/* Main Content Grid Item */}
-        <Grid item xs={12} md={9.5} gap={2} mt={2}>
+        <Grid item xs={12} md={9.5} gap={2} mt={2} sx={{display: 'flex', flexDirection: 'column'}}>
           <AppAppBarRelative/>
-          <Container sx={{minHeight: '100vh', mt: 2}}>
+          <Container>
             {children}
           </Container>
           <StickyFooter />

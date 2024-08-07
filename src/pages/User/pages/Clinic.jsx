@@ -1,6 +1,6 @@
 import React from 'react'
 import Master from '../../../layouts/Master'
-import { Box, Button, Container, Divider, Stack, Typography, alpha } from '@mui/material'
+import { Box, Button, Container, Divider, Grid, Stack, Typography, alpha } from '@mui/material'
 import { CustomCard } from '../../../components'
 import { ArrowRight } from '@mui/icons-material'
 
@@ -72,27 +72,43 @@ function Clinic() {
 
 function ClinicList() {
   return (
-    <div className='grid lg:grid-cols-4 gap-5'>
+    <Grid container spacing={2}>
       {Data.map((item, index) => {
         return(
-          <div className='hover:-translate-y-4 transition' key={index}>
-            <CustomCard key={index}>
-              <div className='space-y-2 w-full flex-1 flex flex-col relative'>
+          <Grid item xs={6} md={3} key={index}>
+            <CustomCard>
+              <Box sx={{display: 'flex', flexDirection: 'column', gap: 1}}>
                 <img src={`/clinicImg/${item.image}`} alt='PetImg' style={{height: 150, width: '100%'}}/>
                 <Typography sx={{fontWeight: 'bold'}}>{item.name}</Typography>
                 <Typography>{item.address}</Typography>
                 <Typography>{item.phone}</Typography>
                 <Divider/>
                 <Typography className='pb-10'>{item.description}</Typography>
-                <div className=' right-0 bottom-0 absolute'>
-                    <Button variant='outlined'>Pet Details <ArrowRight/></Button>
-                </div>
-              </div>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    height: '100%',
+                    position: 'relative', // Ensure the container has relative positioning
+                  }}
+                >
+                  <Button
+                    variant='outlined'
+                    sx={{
+                      position: 'absolute', // Position the button absolutely
+                      bottom: 0,            // Align the button to the bottom
+                      right: 0,             // Align the button to the right
+                    }}
+                  >
+                    Clinic Details <ArrowRight />
+                  </Button>
+                </Box>
+              </Box>
             </CustomCard>
-          </div>
+          </Grid>
         )
       })}
-    </div>
+    </Grid>
   )
 }
 

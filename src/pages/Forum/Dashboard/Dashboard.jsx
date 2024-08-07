@@ -5,7 +5,7 @@ import { Box, Button, Card, Container, Divider, Grid, MenuItem, Toolbar, Typogra
 import { ChatList, CustomCard } from '../../../components';
 import { Person, PinDrop, ThumbUp } from '@mui/icons-material';
 import CommentModal from './Modals/CommentModal';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PostList = [
   {
@@ -32,7 +32,7 @@ function Dashboard() {
   if (localStorage.getItem("userType") == "user" || localStorage.getItem("userType") == "null") {
     return (
       <Master>
-        <Container sx={{ mt: { sm: 20, xs: 15 } }}>
+        <Container sx={{mt: {md: 13, xs: 10}}}>
           <Grid container spacing={2}>
             <Grid item lg={9} xs={12}>
               <Post />
@@ -47,7 +47,6 @@ function Dashboard() {
   } else {
     return (
       <MasterAdmin>
-        <Container sx={{ my: { sm: 5, xs: 15 } }}>
           <Grid container spacing={2}>
             <Grid item lg={9}>
               <Post />
@@ -56,16 +55,12 @@ function Dashboard() {
               <ChatList/>
             </Grid>
           </Grid>
-        </Container>
       </MasterAdmin>
     );
   }
 }
 
 function Post() {
-  const location = useLocation();
-  const pathName = location.pathname
-  const currentPath = pathName.split("/")
   return (
     <Grid container spacing={2}>
       {PostList.map((item, index) => (
@@ -94,7 +89,7 @@ function Post() {
                   </Box>
                   <Typography color="primary.main">{item.name}</Typography>
                 </Box>
-                <Button variant='contained' component={Link} to={`/${currentPath[1]}/forum/message`}>Message</Button>
+                <Button variant='contained' component={Link} to={`/forum/message`}>Message</Button>
               </Box>
               <Divider sx={{ marginY: 2 }} />
               <Typography>{item.description}</Typography>

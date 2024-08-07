@@ -8,7 +8,6 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import {
   createBrowserRouter,
-  redirect,
   RouterProvider,
 } from "react-router-dom";
 import {Login,Register} from './pages/Auth';
@@ -63,7 +62,7 @@ const router = createBrowserRouter([
     element: userType === 'admin' ? <AdminOwnerRequest /> : <Login/>,
   },
   {
-    path: '/admin/clinic',
+    path: '/admin/clinics',
     element: userType === 'admin' ? <AdminClinicList /> : <Login/>,
   },
   {
@@ -99,35 +98,11 @@ const router = createBrowserRouter([
     element: <Profile />,
   },
   {
-    path: '/user/forum',
+    path: '/forum',
     element: userType != "null" ? <ForumDashboard /> : <Login/>, 
   },
   {
-    path: '/admin/forum',
-    element: userType != "null" ? <ForumDashboard /> : <Login/>, 
-  },
-  {
-    path: '/shelter/forum',
-    element: userType != "null" ? <ForumDashboard /> : <Login/>, 
-  },
-  {
-    path: '/vet/forum',
-    element: userType != "null" ? <ForumDashboard /> : <Login/>, 
-  },
-  {
-    path: '/user/forum/message',
-    element: userType != "null" ? <ForumMessage /> : <Login/>, 
-  },
-  {
-    path: '/admin/forum/message',
-    element: userType != "null" ? <ForumMessage /> : <Login/>, 
-  },
-  {
-    path: '/vet/forum/message',
-    element: userType != "null" ? <ForumMessage /> : <Login/>, 
-  },
-  {
-    path: '/shelter/forum/message',
+    path: '/forum/message',
     element: userType != "null" ? <ForumMessage /> : <Login/>, 
   },
 ]);
