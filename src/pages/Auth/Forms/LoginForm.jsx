@@ -112,7 +112,6 @@ function LoginForm() {
                 </Typography>
             </div>
             <Button variant='outlined' sx={{width: '100%'}}>Sign in with Google</Button>
-            <ToastContainer/>
         </Container>
     );
 }

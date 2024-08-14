@@ -104,6 +104,9 @@ function NavAdmin() {
             <Button variant={location.pathname == '/admin' ? 'contained': 'outlined'} sx={{width: '100%'}} component={Link} to="/admin">
                 Dashboard
             </Button>
+            <Button variant={location.pathname == '/admin/user' ? 'contained': 'outlined'} sx={{width: '100%'}} component={Link} to="/admin/user">
+                List of Users
+            </Button>
             <Button variant={location.pathname == '/admin/pet' ? 'contained': 'outlined'} sx={{width: '100%'}} component={Link} to="/admin/pet">
                 List of Pets
             </Button>
