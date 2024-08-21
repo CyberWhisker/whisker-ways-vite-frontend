@@ -27,11 +27,11 @@ const Master = ({ children }) => {
     <ThemeProvider theme={themeMode === "dark" ? darkTheme : lightTheme}>
       <CssBaseline />
       <AppAppBar />
-      <Box >
+      <Box sx={{minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
         {children}
-      </Box>
-      <Box sx={{marginTop: 5}}>
-        <StickyFooter/>
+        <Box sx={{marginTop: 2}}>
+          <StickyFooter/>
+        </Box>
       </Box>
     </ThemeProvider>
   );

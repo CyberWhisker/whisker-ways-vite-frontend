@@ -9,7 +9,7 @@ function Message() {
   if (localStorage.getItem("userType") == "user" || localStorage.getItem("userType") == "null") {
     return (
       <Master>
-        <Grid container spacing={3} sx={{height: "100%"}}>
+        <Grid container spacing={3} sx={{px: 15, pt: 12}}>
           <Grid item xs={3}>
             <ChatList/>
           </Grid>
@@ -186,7 +186,6 @@ function Messages() {
       <Grid container spacing={2}>
         {sortedMessageData.map((item, index) => {
           const showIcon = item.userID !== prevUserID 
-          console.log(showIcon)
           prevUserID = item.userID
           if (item.userID === currentUserID) {
             return (

@@ -7,7 +7,6 @@ import React, { useState } from 'react';
 export default function CommentModal({data}) {
     const [open, setOpen] = useState(false);
     const handleToggle = () => {
-        console.log(open);
         setOpen(true)
     }
     return (

@@ -11,7 +11,7 @@ function Navlist({setopen}) {
             {location.pathname == '/' && (
                 <NavLanding setopen={setopen}/>
             )}
-            {location.pathname.startsWith('/user') && (
+            {(userType == "user" && location.pathname != '/')  && (
                 <NavUser/>
             )}
             {(userType == "admin" && location.pathname != '/' && !location.pathname.startsWith('/user')) && (
