@@ -1,0 +1,46 @@
+[
+    {
+        "_id": 1,
+        "name": "Animal Rescue PH",
+        "image": "Clinic1.png",
+        "address": "J Antonino St Corner Alfonso St Zone 2 Barangay Partida San Miguel Bulacan, Bulacan, Philippines",
+        "phone": "0923 425 6793",
+        "email": "contact@animalrescueph.org",
+        "status": "Active",
+        "parking": "Available",
+        "description": "To protect, love and support those animals who were unwanted and abused. To give them second chance in life and find a better and comfortable home for every rescued animals."
+    },
+    {
+        "_id": 2,
+        "name": "Vet Solutions",
+        "image": "Clinic2.png",
+        "address": "Kalayaan avenue, Wilcon CIty Center Visayas Avenue, Xavierville avenue, Quezon City, Philippines",
+        "phone": "0925 445 0932",
+        "email": "info@vetsolutions.ph",
+        "status": "Active",
+        "parking": "Street parking",
+        "description": "Your one stop shop on your pet needs!"
+    },
+    {
+        "_id": 3,
+        "name": "Metro Animal Clinic PH",
+        "image": "Clinic3.png",
+        "address": "Robredo Avenue, Purok Yellowbell, 3rd Block, Brgy. Sta. Cruz, Koronadal, Philippines, 9506",
+        "phone": "0930 797 2653",
+        "email": "support@metroanimalclinic.ph",
+        "status": "Active",
+        "parking": "Available",
+        "description": "Healthy pets, Happy owners"
+    },
+    {
+        "_id": 4,
+        "name": "Pet Care Clinic",
+        "image": "Clinic4.png",
+        "address": "Robredo Avenue, Purok Yellowbell, 3rd Block, Brgy. Sta. Cruz, Koronadal, Philippines, 9506",
+        "phone": "0968 706 9332",
+        "email": "contact@petcareclinic.ph",
+        "status": "Closed",
+        "parking": "Limited",
+        "description": "Where caring means more"
+    }
+]

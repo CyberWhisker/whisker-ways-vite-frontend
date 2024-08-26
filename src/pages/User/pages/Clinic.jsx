@@ -1,40 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Master from '../../../layouts/Master'
-import { Box, Button, Container, Divider, Grid, Stack, Typography, alpha } from '@mui/material'
+import { Box, Button, Card, Container, Divider, Grid, MenuItem, Stack, TextField, Typography, alpha } from '@mui/material'
 import { CustomCard } from '../../../components'
-import { ArrowRight } from '@mui/icons-material'
-
-const Data = [
-    {
-      name: 'Animal Rescue PH',
-      image: 'Clinic1.png',
-      address: 'J Antonino St Corner Alfonso St Zone 2 Barangay Partida San Miguel Bulacan, Bulacan, Philippines',
-      phone: '0923 425 6793',
-      description: 'To protect, love and support those animals who were unwanted and abused. To give them second chance in life and find a better and comfortable home for every rescued animals.'
-    },
-    {
-      name: 'Vet Solutions',
-      image: 'Clinic2.png',
-      address: 'Kalayaan avenue, Wilcon CIty Center Visayas Avenue, Xavierville avenue, Quezon City, Philippines',
-      phone: '0925 445 0932',
-      description: 'Your one stop shop on your pet needs!'
-    },
-    {
-      name: 'Metro Animal Clinic PH',
-      image: 'Clinic3.png',
-      address: 'Robredo Avenue, Purok Yellowbell, 3rd Block, Brgy. Sta. Cruz, Koronadal, Philippines, 9506',
-      phone: '0930 797 2653',
-      description: 'Healthy pets, Happy owners'
-    },
-    {
-      name: 'Pet Care Clinic',
-      image: 'Clinic4.png',
-      address: 'Robredo Avenue, Purok Yellowbell, 3rd Block, Brgy. Sta. Cruz, Koronadal, Philippines, 9506',
-      phone: '0968 706 9332',
-      description: 'Where caring means more'
-    }
-  ];
-
+import { ArrowRight, Pets } from '@mui/icons-material'
+import { Home, PinDrop, Search } from '@mui/icons-material';
+import { Link } from 'react-router-dom'
+import Data from './DataClinic.json'
 
 function Clinic() {
   return (
@@ -50,7 +21,7 @@ function Clinic() {
         backgroundRepeat: 'no-repeat',
       })}>
         <Container
-        className='space-y-10'
+        className='space-y-5'
           sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -59,8 +30,10 @@ function Clinic() {
           }}
         >
           <Typography>
-            <label className='text-5xl font-extrabold'>Vet Clinic</label>
+            <label className='text-5xl font-extrabold'>Near my Location</label>
           </Typography>
+          <Typography> Please provide your information to assist you in locating veterinary clinics. </Typography>
+          <ControlList/>
           <Stack spacing={2} useFlexGap sx={{ width: { xs: '100%', sm: '90%' } }}>
             <ClinicList/>
           </Stack>
@@ -71,9 +44,10 @@ function Clinic() {
 }
 
 function ClinicList() {
+  const [data, setData] = useState(Data);
   return (
     <Grid container spacing={2}>
-      {Data.map((item, index) => {
+      {data.map((item, index) => {
         return(
           <Grid item xs={6} md={3} key={index}>
             <CustomCard>
@@ -99,6 +73,8 @@ function ClinicList() {
                       bottom: 0,            // Align the button to the bottom
                       right: 0,             // Align the button to the right
                     }}
+                    component={Link}
+                    to={`/user/clinic/${item._id}`}
                   >
                     Clinic Details <ArrowRight />
                   </Button>
@@ -109,6 +85,97 @@ function ClinicList() {
         )
       })}
     </Grid>
+  )
+}
+
+function ControlList() {
+  const cityData = [
+    {
+      "_id": 1,
+      "name": "Intramuros"
+    },
+    {
+      "_id": 2,
+      "name": "Malate"
+    },
+    {
+      "_id": 3,
+      "name": "Ermita"
+    },
+    {
+      "_id": 4,
+      "name": "Quiapo"
+    },
+    {
+      "_id": 5,
+      "name": "San Miguel"
+    }
+  ]
+  const coverageData = [
+    {
+      "_id": 1,
+      "name": "Within the City"
+    },
+    {
+      "_id": 2,
+      "name": "Outside the City"
+    },
+    {
+      "_id": 3,
+      "name": "Within the Province"
+    }
+  ]
+
+  const [city, setCity] = useState('');
+  const [coverage, setCoverage] = useState('');
+
+  const handleCity = (event) => {
+    setCity(event.target.value);
+  }
+  const handleCoverage = (event) => {
+    setCoverage(event.target.value);
+  }
+  
+  return(
+    <Card sx={{width: '100%', padding: 2, borderRadius: 2}}>
+      <Stack direction="row" justifyContent="space-between" flex={1} spacing={10}>
+        <Box sx={{display: 'flex', alignItems: 'center', flex: 1, gap: 2}}>
+          <Home sx={{fontSize: 35}}/>
+          <TextField 
+          label="Select your City" 
+          select 
+          variant="standard" 
+          sx={{width: '100%'}}
+          value={city}
+          onChange={handleCity}
+          >
+            {cityData.map((item, index) => (
+              <MenuItem key={index} value={item._id}>{item.name}</MenuItem>
+            ))}
+          </TextField>
+        </Box>
+        <Box sx={{display: 'flex', alignItems: 'center', flex: 1, gap: 2}}>
+          <PinDrop sx={{fontSize: 35}}/>
+          <TextField 
+          label="Select Coverage" 
+          select 
+          variant="standard" 
+          sx={{width: '100%'}}
+          value={coverage}
+          onChange={handleCoverage}
+          >
+            {coverageData.map((item, index) => (
+              <MenuItem key={index} value={item._id}>{item.name}</MenuItem>
+            ))}
+          </TextField>
+        </Box>
+        <Box>
+          <Button variant="plaine">
+            <Search sx={{fontSize: 35}}/>
+          </Button>
+        </Box>
+      </Stack>
+    </Card>
   )
 }
 

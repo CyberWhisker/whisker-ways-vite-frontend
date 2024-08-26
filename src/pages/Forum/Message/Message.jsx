@@ -6,10 +6,10 @@ import {ChatList} from '../../../components'
 import { Person, Send } from '@mui/icons-material'
 
 function Message() {
-  if (localStorage.getItem("userType") == "user" || localStorage.getItem("userType") == "null") {
+  if (localStorage.getItem("userType") == "user" || localStorage.getItem("userType") == null) {
     return (
       <Master>
-        <Grid container spacing={3} sx={{px: 15, pt: 12}}>
+        <Grid container spacing={3} sx={{px: 24, pt: 12}}>
           <Grid item xs={3}>
             <ChatList/>
           </Grid>

@@ -2,7 +2,8 @@ import React from 'react'
 import { LayoutMasterAuth } from '../../layouts'
 import { Box } from '@mui/material'
 import { CustomCard } from '../../components'
-import AppImg from '/appImg/WEB_6.png'
+// import AppImg from '/appImg/WEB_6.png'
+import Logo from '/appImg/Logo.png'
 import RegisterForm from './Forms/RegisterForm'
 
 function Register() {
@@ -23,7 +24,7 @@ function Register() {
               </CustomCard>
             </div>
             <div className=' opacity-50 flex items-end flex-col'>
-              <img src={AppImg} alt='IMG'/>
+              <img src={Logo} alt='IMG'/>
             </div>
           </div>
         </div>

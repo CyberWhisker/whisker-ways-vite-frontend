@@ -3,7 +3,8 @@ import { LayoutMasterAuth } from '../../layouts'
 import { Box } from '@mui/material'
 import { CustomCard } from '../../components'
 import LoginForm from './Forms/LoginForm'
-import AppImg from '/appImg/WEB_6.png'
+// import AppImg from '/appImg/WEB_6.png'
+import Logo from '/appImg/Logo.png'
 
 function Login() {
   return (
@@ -23,7 +24,7 @@ function Login() {
               </CustomCard>
             </div>
             <div className=' opacity-50 flex items-end flex-col'>
-              <img src={AppImg} alt='IMG'/>
+              <img src={Logo} alt='IMG'/>
             </div>
           </div>
         </div>

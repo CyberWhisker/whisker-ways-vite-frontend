@@ -1,5 +1,5 @@
 import { Dashboard, Favorite, Map, Search } from '@mui/icons-material';
-import { Button, Divider, MenuItem, Typography } from '@mui/material'
+import { Button, Divider, MenuItem, TextField, Typography } from '@mui/material'
 import React from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ function Navlist({setopen}) {
             {location.pathname == '/' && (
                 <NavLanding setopen={setopen}/>
             )}
-            {(userType == "user" && location.pathname != '/')  && (
+            {((userType == null || userType == 'user') && location.pathname != '/')  && (
                 <NavUser/>
             )}
             {(userType == "admin" && location.pathname != '/' && !location.pathname.startsWith('/user')) && (
@@ -65,27 +65,34 @@ function NavLanding({setopen}) {
 
 function NavUser() {
     const navigate = useNavigate();
+    const location = useLocation();
     return (
         <React.Fragment>
-            <MenuItem onClick={() => navigate('/user/petfinder')}>
+            <MenuItem onClick={() => navigate('/user/petfinder')} selected={location.pathname == '/user/petfinder'}>
                 <Typography color="primary.main">
                     <Search/>&nbsp;
                     Finder Tools
                 </Typography>
             </MenuItem>
-            <MenuItem onClick={() => navigate('/user/petdating')}>
+            <MenuItem onClick={() => navigate('/user/petdating')} selected={location.pathname == '/user/petdating'}>
                 <Typography color="primary.main">
                     <Favorite/>&nbsp;
                     Pet Dating
                 </Typography>
             </MenuItem>
-            <MenuItem onClick={() => navigate('/user/clinic')}>
+            <MenuItem onClick={() => navigate('/user/clinic')} selected={location.pathname.startsWith('/user/clinic')}>
                 <Typography color="primary.main">
                     <Map/>&nbsp;
-                    Vet Clinic Locator
+                    Clinic
                 </Typography>
             </MenuItem>
-            <MenuItem onClick={() => navigate('/forum')}>
+            <MenuItem onClick={() => navigate('/user/shelter')} selected={location.pathname.startsWith('/user/shelter')}>
+                <Typography color="primary.main">
+                    <Map/>&nbsp;
+                    Shelter
+                </Typography>
+            </MenuItem>
+            <MenuItem onClick={() => navigate('/forum')} selected={location.pathname.startsWith('/forum')}>
                 <Typography color="primary.main">
                     <Dashboard/>&nbsp;
                     Forum

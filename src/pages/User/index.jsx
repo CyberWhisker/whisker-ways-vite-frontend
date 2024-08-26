@@ -1,3 +1,8 @@
 export {default as UserPetFinder} from './pages/PetFinder'
 export {default as UserPetDating} from './pages/PetDating'
 export {default as UserClinic} from './pages/Clinic'
+export {default as UserPetDetails} from './pages/PetDetails'
+export {default as UserClinicDetails} from './pages/ClinicDetails'
+export {default as UserShelter} from './pages/Shelter'
+export {default as UserShelterDetails} from './pages/ShelterDetails'
+export {default as UserAdoption} from './pages/Form/AdoptionForm'

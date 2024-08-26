@@ -107,7 +107,7 @@ function PinAddress() {
           Get Current Location
         </Button>
       </Stack>
-      <Card>
+      <Card sx={{height: '40vh'}}>
         <MapContainer
           center={position}
           zoom={zoom}

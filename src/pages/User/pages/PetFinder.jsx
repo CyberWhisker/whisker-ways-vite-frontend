@@ -1,75 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Master from '../../../layouts/Master'
 import { Box, Button, Container, Divider, Grid, Stack, Typography, alpha } from '@mui/material'
 import { CustomCard } from '../../../components'
 import { ArrowRight } from '@mui/icons-material'
-
-const Data = [
-  {
-      "_id": 1,
-      "name": "Jupiter",
-      "gender": "Male",
-      "species": "Dog",
-      "breed": "American Bully",
-      "location": "AKF Animal Rescue & Rehabilitation Center"
-  },
-  {
-      "_id": 2,
-      "name": "Jupiter",
-      "gender": "Male",
-      "species": "Dog",
-      "breed": "American Bully",
-      "location": "AKF Animal Rescue & Rehabilitation Center"
-  },
-  {
-      "_id": 3,
-      "name": "Jupiter",
-      "gender": "Male",
-      "species": "Dog",
-      "breed": "American Bully",
-      "location": "AKF Animal Rescue & Rehabilitation Center"
-  },
-  {
-      "_id": 4,
-      "name": "Jupiter",
-      "gender": "Male",
-      "species": "Dog",
-      "breed": "American Bully",
-      "location": "AKF Animal Rescue & Rehabilitation Center"
-  },
-  {
-      "_id": 5,
-      "name": "Jupiter",
-      "gender": "Male",
-      "species": "Dog",
-      "breed": "American Bully",
-      "location": "AKF Animal Rescue & Rehabilitation Center"
-  },
-  {
-      "_id": 6,
-      "name": "Jupiter",
-      "gender": "Male",
-      "species": "Dog",
-      "breed": "American Bully",
-      "location": "AKF Animal Rescue & Rehabilitation Center"
-  },
-  {
-      "_id": 7,
-      "name": "Jupiter",
-      "gender": "Male",
-      "species": "Dog",
-      "breed": "American Bully",
-      "location": "AKF Animal Rescue & Rehabilitation Center"
-  },
-  {
-      "_id": 8,
-      "name": "Jupiter",
-      "gender": "Male",
-      "species": "Dog",
-      "breed": "American Bully",
-      "location": "AKF Animal Rescue & Rehabilitation Center"
-  }
-]
+import { Link } from 'react-router-dom'
+import Data from './Data.json';
 
 
 function PetFinder() {
@@ -108,23 +43,30 @@ function PetFinder() {
 }
 
 function PetList() {
+  const [data, setData] = useState(Data);
   return (
     <Grid container spacing={2}>
-      {Data.map((item, index) => {
+      {data.map((item, index) => {
         return(
           <Grid item xs={6} md={3} key={index}>
             <CustomCard key={index}>
-              <Box sx={{display: 'flex', flexDirection: 'column', gap: 1}}>
-                <img src={'/petImg/dog.png'} alt='PetImg'/>
-                <Typography sx={{fontWeight: 'bold'}}>{item.name}</Typography>
-                <Typography>{item.gender}, {item.species}</Typography>
-                <Divider/>
-                <Box sx={{display: {xs: 'none', md: 'block'}}}>
-                  <Typography>{item.species}</Typography>
+              <Box sx={{display: 'flex', flexDirection: 'column', gap: 1, justifyContent: 'space-between'}}>
+                <Stack spacing={1}>
+                  <img src={'/petImg/dog.png'} alt='PetImg'/>
+                  <Typography sx={{fontWeight: 'bold'}}>{item.name}</Typography>
+                  <Typography>{item.gender}, {item.species}</Typography>
+                  <Divider/>
+                  <Typography>{item.breed}</Typography>
                   <Typography>{item.location}</Typography>
-                </Box>
+                </Stack>
                 <Box sx={{display: 'flex', justifyContent:'end'}}>
-                  <Button variant='outlined'><Typography sx={{display: {xs: 'none', md: 'block'}}}>Pet</Typography> Details <ArrowRight/></Button>
+                  <Button variant='outlined' component={Link} to={`/user/petfinder/${item._id}`}>
+                    <Typography sx={{display: {xs: 'none', md: 'block'}}}>Pet</Typography> 
+                    <Typography>
+                      Details 
+                    </Typography>
+                    <ArrowRight/>
+                  </Button>
                 </Box>
               </Box>
             </CustomCard>

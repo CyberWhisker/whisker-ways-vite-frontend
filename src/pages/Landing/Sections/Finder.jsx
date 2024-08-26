@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Button, Skeleton, TextField } from '@mui/material';
+import React, { useState } from 'react';
+import { Button, Card, MenuItem, Skeleton, Stack, TextField } from '@mui/material';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
@@ -89,27 +89,129 @@ const CardList = () => {
 }
 
 function ControlList() {
+  const cityData = [
+    {
+      "_id": 1,
+      "name": "Intramuros"
+    },
+    {
+      "_id": 2,
+      "name": "Malate"
+    },
+    {
+      "_id": 3,
+      "name": "Ermita"
+    },
+    {
+      "_id": 4,
+      "name": "Quiapo"
+    },
+    {
+      "_id": 5,
+      "name": "San Miguel"
+    }
+  ]
+  const toolsData = [
+    {
+      "_id": 1,
+      "name": "Pet Finder"
+    },
+    {
+      "_id": 2,
+      "name": "Pet Dating"
+    },
+    {
+      "_id": 3,
+      "name": "Vet Locator"
+    },
+    {
+      "_id": 4,
+      "name": "Shelter Locator"
+    }
+  ]
+  const coverageData = [
+    {
+      "_id": 1,
+      "name": "Within the City"
+    },
+    {
+      "_id": 2,
+      "name": "Outside the City"
+    },
+    {
+      "_id": 3,
+      "name": "Within the Province"
+    }
+  ]
+
+  const [city, setCity] = useState('');
+  const [tools, setTools] = useState('');
+  const [coverage, setCoverage] = useState('');
+
+  const handleCity = (event) => {
+    setCity(event.target.value)
+  } 
+  const handleCoverage = (event) => {
+    setCoverage(event.target.value)
+  } 
+  const handleTools = (event) => {
+    setTools(event.target.value)
+  } 
+  
   return(
-    <CustomCard>
-      <div className='sm:flex justify-between w-full space-y-5 lg:space-y-0'>
-        <div className='flex space-x-5 items-center'>
+    <Card sx={{width: '100%', padding: 2, borderRadius: 2}}>
+      <Stack direction="row" justifyContent="space-between" flex={1} spacing={10}>
+        <Box sx={{display: 'flex', alignItems: 'center', flex: 1, gap: 2}}>
           <Home sx={{fontSize: 35}}/>
-          <TextField label="Enter your ZIP code" variant="standard" style={{width: '100%', flex: 1}}/>
-        </div>
-        <div className='flex space-x-5 items-center'>
+          <TextField 
+          label="Select your City" 
+          select 
+          variant="standard" 
+          sx={{width: '100%'}}
+          value={city}
+          onChange={handleCity}
+          >
+            {cityData.map((item, index) => (
+              <MenuItem key={index} value={item._id}>{item.name}</MenuItem>
+            ))}
+          </TextField>
+        </Box>
+        <Box sx={{display: 'flex', alignItems: 'center', flex: 1, gap: 2}}>
           <PinDrop sx={{fontSize: 35}}/>
-          <TextField label="Enter Radius" variant="standard" style={{width: '100%'}}/>
-        </div>
-        <div className='flex space-x-5 items-center'>
+          <TextField 
+          label="Select Coverage" 
+          select 
+          variant="standard" 
+          sx={{width: '100%'}}
+          value={coverage}
+          onChange={handleCoverage}
+          >
+            {coverageData.map((item, index) => (
+              <MenuItem key={index} value={item._id}>{item.name}</MenuItem>
+            ))}
+          </TextField>
+        </Box>
+        <Box sx={{display: 'flex', alignItems: 'center', flex: 1, gap: 2}}>
           <Pets sx={{fontSize: 35}}/>
-          <TextField label="Select Tool" variant="standard" style={{width: '100%'}}/>
-        </div>
-        <div className='flex space-x-5 items-center justify-center'>
+          <TextField 
+          label="Select Tools" 
+          select 
+          variant="standard" 
+          sx={{width: '100%'}}
+          value={tools}
+          onChange={handleTools}
+          >
+            {toolsData.map((item, index) => (
+              <MenuItem key={index} value={item._id}>{item.name}</MenuItem>
+            ))}
+          </TextField>
+        </Box>
+        <Box>
           <Button variant="plaine">
             <Search sx={{fontSize: 35}}/>
           </Button>
-        </div>
-      </div>
-    </CustomCard>
+        </Box>
+      </Stack>
+    </Card>
   )
 }

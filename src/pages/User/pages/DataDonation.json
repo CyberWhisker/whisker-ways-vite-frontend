@@ -1,0 +1,22 @@
+[
+    {
+        "accountType": "BPI Savings Account",
+        "accountNumber": "Bank account number",
+        "accountHolder": "Bank account holder"
+    },
+    {
+        "accountType": "BDO Savings Account",
+        "accountNumber": "Bank account number",
+        "accountHolder": "Bank account holder"
+    },
+    {
+        "accountType": "GCash Account",
+        "phoneNumber": "0912 345 6789",
+        "accountHolder": "Firstname Lastname"
+    },
+    {
+        "accountType": "PayMaya Account",
+        "phoneNumber": "0912 345 6789",
+        "accountHolder": "Firstname Lastname"
+    }
+]

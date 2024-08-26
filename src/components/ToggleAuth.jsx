@@ -7,14 +7,14 @@ import MenuItem from '@mui/material/MenuItem';
 import { red } from '@mui/material/colors';
 
 function handleLogout() {
-  localStorage.setItem("userType", null)
+  localStorage.removeItem("userType")
   window.location.reload();
 } 
 
 function ToggleAuth() {
   return (
     <React.Fragment>
-      {localStorage.getItem('userType') == "null" ? (
+      {localStorage.getItem('userType') == null ? (
         <React.Fragment>
           <Button
           color="primary"

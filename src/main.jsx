@@ -11,7 +11,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import {Login,Register} from './pages/Auth';
-import { UserClinic, UserPetDating, UserPetFinder } from './pages/User';
+import { UserAdoption, UserClinic, UserClinicDetails, UserPetDating, UserPetDetails, UserPetFinder, UserShelter, UserShelterDetails } from './pages/User';
 import { AdminClinicList, AdminDashboard, AdminOwnerRequest, AdminPetDating, AdminPetList, AdminUsersList } from './pages/Admin';
 import Profile from './pages/Profile/Profile.jsx';
 import { VetClinic, VetDashboard, VetDetails } from './pages/Vet';
@@ -34,8 +34,16 @@ const router = createBrowserRouter([
     element: <Register/>,
   },
   {
+    path: "/user/adoption/:id",
+    element: <UserAdoption/>,
+  },
+  {
     path: "/user/petfinder",
     element: <UserPetFinder/>,
+  },
+  {
+    path: "/user/petfinder/:id",
+    element: <UserPetDetails/>,
   },
   {
     path: "/user/petdating",
@@ -44,6 +52,18 @@ const router = createBrowserRouter([
   {
     path: "/user/clinic",
     element: <UserClinic/>,
+  },
+  {
+    path: "/user/clinic/:id",
+    element: <UserClinicDetails/>,
+  },
+  {
+    path: "/user/shelter",
+    element: <UserShelter/>,
+  },
+  {
+    path: "/user/shelter/:id",
+    element: <UserShelterDetails/>,
   },
   {
     path: '/admin',

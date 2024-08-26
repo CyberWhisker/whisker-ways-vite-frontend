@@ -1,0 +1,38 @@
+[
+    {
+        "service": "Kapon",
+        "price": {
+            "min": "100.00",
+            "max": "150.00"
+        },
+        "animals": ["cats", "dogs"],
+        "veterinarian": "Dr. Kim Yongsun"
+    },
+    {
+        "service": "Emergency",
+        "price": {
+            "min": "3,000.00",
+            "max": "7,000.00"
+        },
+        "animals": ["cats", "dogs"],
+        "veterinarian": "Dr. Kim Yongsun"
+    },
+    {
+        "service": "Vaccine",
+        "price": {
+            "min": "3,000.00",
+            "max": "7,000.00"
+        },
+        "animals": ["cats", "dogs"],
+        "veterinarian": "Dr. Kim Yongsun"
+    },
+    {
+        "service": "Check-up",
+        "price": {
+            "min": "3,000.00",
+            "max": "7,000.00"
+        },
+        "animals": ["cats", "dogs"],
+        "veterinarian": "Dr. Kim Yongsun"
+    }
+]

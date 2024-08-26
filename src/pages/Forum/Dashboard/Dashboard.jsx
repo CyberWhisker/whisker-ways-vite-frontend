@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MasterAdmin from '../../../layouts/MasterAdmin';
 import Master from '../../../layouts/Master';
 import { Box, Button, Card, Container, Divider, Grid, MenuItem, Toolbar, Typography } from '@mui/material';
-import { ChatList, CustomCard } from '../../../components';
+import { ChatList, CustomCard, SliderModal } from '../../../components';
 import { Person, PinDrop, ThumbUp } from '@mui/icons-material';
 import CommentModal from './Modals/CommentModal';
 import { Link } from 'react-router-dom';
+import LocationModal from './Modals/LocationModal';
 
 const PostList = [
   {
@@ -29,19 +30,23 @@ const PostList = [
 ];
 
 function Dashboard() {
-  if (localStorage.getItem("userType") == "user" || localStorage.getItem("userType") == "null") {
+  const [open, setOpen] = useState();
+  if (localStorage.getItem("userType") == "user" || localStorage.getItem("userType") == null) {
     return (
       <Master>
         <Container sx={{mt: {md: 13, xs: 10}}}>
           <Grid container spacing={2}>
             <Grid item lg={9} xs={12}>
-              <Post />
+              <Post open={open} setOpen={setOpen}/>
             </Grid>
             <Grid item lg={3} sx={{display: {xs: 'none', md: 'block'}}}>
               <ChatList/>
             </Grid>
           </Grid>
         </Container>
+        <SliderModal isOpen={open} toggleModal={() => setOpen(!open)}>
+          <LocationModal/>
+        </SliderModal>
       </Master>
     );
   } else {
@@ -60,7 +65,7 @@ function Dashboard() {
   }
 }
 
-function Post() {
+function Post({open, setOpen}) {
   return (
     <Grid container spacing={2}>
       {PostList.map((item, index) => (
@@ -107,29 +112,23 @@ function Post() {
                 </Box>
               )}
               <Divider sx={{marginY: 2}}/>
-              <Tools data={item}/>
+              <Toolbar>
+                <MenuItem sx={{borderRadius: "10px"}}>
+                  <ThumbUp/>
+                </MenuItem>
+                <MenuItem sx={{borderRadius: "10px"}}>
+                  <CommentModal data={item}/>
+                </MenuItem>
+                <MenuItem sx={{borderRadius: "10px"}}>
+                  <PinDrop onClick={() => setOpen(!open)}/>
+                </MenuItem>
+              </Toolbar>
             </Box>
           </CustomCard>
         </Grid>
       ))}
     </Grid>
   );
-}
-
-function Tools({data}) {
-  return (
-    <Toolbar>
-      <MenuItem sx={{borderRadius: "10px"}}>
-        <ThumbUp/>
-      </MenuItem>
-      <MenuItem sx={{borderRadius: "10px"}}>
-        <CommentModal data={data}/>
-      </MenuItem>
-      <MenuItem sx={{borderRadius: "10px"}}>
-        <PinDrop/>
-      </MenuItem>
-    </Toolbar>
-  )
 }
 
 export default Dashboard;

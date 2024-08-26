@@ -2,26 +2,24 @@ import React, { useState } from 'react'
 import Master from '../../../layouts/Master'
 import { Box, Button, Card, Container, Divider, Grid, MenuItem, Stack, TextField, Typography, alpha } from '@mui/material'
 import { CustomCard } from '../../../components'
-import { ArrowRight } from '@mui/icons-material'
+import { ArrowRight, Pets } from '@mui/icons-material'
+import { Home, PinDrop, Search } from '@mui/icons-material';
 import { Link } from 'react-router-dom'
-import Data from './Data.json';
-import { Home, Pets, PinDrop, Search } from '@mui/icons-material';
+import Data from './DataClinic.json'
 
-
-function PetFinder() {
+function Shelter() {
   return (
     <Master>
       <Box
-        sx={(theme) => ({
-          width: '100%',
-          backgroundImage:
-            theme.palette.mode === 'light'
-              ? `linear-gradient(#FFF, ${alpha('#CEE5FD', 0.0)})`
-              : `linear-gradient(#02294F, ${alpha('#090E10', 0.0)})`,
-          backgroundSize: '100% 20%',
-          backgroundRepeat: 'no-repeat',
-        })}
-      >
+      sx={(theme) => ({
+        width: '100%',
+        backgroundImage:
+          theme.palette.mode === 'light'
+            ? `linear-gradient(#FFF, ${alpha('#CEE5FD', 0.0)})`
+            : `linear-gradient(#02294F, ${alpha('#090E10', 0.0)})`,
+        backgroundSize: '100% 20%',
+        backgroundRepeat: 'no-repeat',
+      })}>
         <Container
         className='space-y-5'
           sx={{
@@ -32,14 +30,11 @@ function PetFinder() {
           }}
         >
           <Typography>
-            <label className='text-5xl font-extrabold'>Pet Dating</label>
-          </Typography>
-          <Typography>
-            Please provide your information to assist you in discovering the perfect mate for your pet.
+            <label className='text-5xl font-extrabold'>Near my Location</label>
           </Typography>
           <ControlList/>
           <Stack spacing={2} useFlexGap sx={{ width: { xs: '100%', sm: '90%' } }}>
-            <PetList/>
+            <ClinicList/>
           </Stack>
         </Container>
       </Box>
@@ -47,30 +42,40 @@ function PetFinder() {
   )
 }
 
-function PetList() {
+function ClinicList() {
   const [data, setData] = useState(Data);
   return (
     <Grid container spacing={2}>
       {data.map((item, index) => {
         return(
           <Grid item xs={6} md={3} key={index}>
-            <CustomCard key={index}>
-              <Box sx={{display: 'flex', flexDirection: 'column', gap: 1, justifyContent: 'space-between'}}>
-                <Stack spacing={1}>
-                  <img src={'/petImg/dog.png'} alt='PetImg'/>
-                  <Typography sx={{fontWeight: 'bold'}}>{item.name}</Typography>
-                  <Typography>{item.gender}, {item.species}</Typography>
-                  <Divider/>
-                  <Typography>{item.breed}</Typography>
-                  <Typography>{item.location}</Typography>
-                </Stack>
-                <Box sx={{display: 'flex', justifyContent:'end'}}>
-                  <Button variant='outlined' component={Link} to={`/user/petfinder/${item._id}`}>
-                    <Typography sx={{display: {xs: 'none', md: 'block'}}}>Pet</Typography> 
-                    <Typography>
-                      Details 
-                    </Typography>
-                    <ArrowRight/>
+            <CustomCard>
+              <Box sx={{display: 'flex', flexDirection: 'column', gap: 1}}>
+                <img src={`/clinicImg/${item.image}`} alt='PetImg' style={{height: 150, width: '100%'}}/>
+                <Typography sx={{fontWeight: 'bold'}}>{item.name}</Typography>
+                <Typography>{item.address}</Typography>
+                <Typography>{item.phone}</Typography>
+                <Divider/>
+                <Typography className='pb-10'>{item.description}</Typography>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'flex-end',
+                    height: '100%',
+                    position: 'relative', // Ensure the container has relative positioning
+                  }}
+                >
+                  <Button
+                    variant='outlined'
+                    sx={{
+                      position: 'absolute', // Position the button absolutely
+                      bottom: 0,            // Align the button to the bottom
+                      right: 0,             // Align the button to the right
+                    }}
+                    component={Link}
+                    to={`/user/shelter/${item._id}`}
+                  >
+                    Shelter Details <ArrowRight />
                   </Button>
                 </Box>
               </Box>
@@ -105,16 +110,6 @@ function ControlList() {
       "name": "San Miguel"
     }
   ]
-  const preferenceData = [
-    {
-      "_id": 1,
-      "name": "Jolly"
-    },
-    {
-      "_id": 2,
-      "name": "Agressive"
-    }
-  ]
   const coverageData = [
     {
       "_id": 1,
@@ -132,16 +127,12 @@ function ControlList() {
 
   const [city, setCity] = useState('');
   const [coverage, setCoverage] = useState('');
-  const [personality, setPersonality] = useState('');
 
   const handleCity = (event) => {
     setCity(event.target.value);
   }
   const handleCoverage = (event) => {
     setCoverage(event.target.value);
-  }
-  const handlePersonality = (event) => {
-    setPersonality(event.target.value);
   }
   
   return(
@@ -177,21 +168,6 @@ function ControlList() {
             ))}
           </TextField>
         </Box>
-        <Box sx={{display: 'flex', alignItems: 'center', flex: 1, gap: 2}}>
-          <Pets sx={{fontSize: 35}}/>
-          <TextField 
-          label="Select Preference" 
-          select 
-          variant="standard" 
-          sx={{width: '100%'}}
-          value={personality}
-          onChange={handlePersonality}
-          >
-            {preferenceData.map((item, index) => (
-              <MenuItem key={index} value={item._id}>{item.name}</MenuItem>
-            ))}
-          </TextField>
-        </Box>
         <Box>
           <Button variant="plaine">
             <Search sx={{fontSize: 35}}/>
@@ -202,4 +178,4 @@ function ControlList() {
   )
 }
 
-export default PetFinder
+export default Shelter
