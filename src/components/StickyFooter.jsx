@@ -19,7 +19,7 @@ export default function StickyFooter() {
         <div className='grid lg:grid-cols-4 justify-between gap-5'>
           <div>
             <Typography variant='h5' fontWeight={"bold"} sx={{cursor: 'pointer'}} component={Link} to={'/'}>
-              Whisker Way
+              Wisker Way
             </Typography>
             <Typography>
                 <label>

@@ -70,7 +70,7 @@ export default function Hero() {
             }}
           >
             <label className='text-8xl font-extrabold'>
-              Whisker&nbsp;
+              Wisker&nbsp;
             </label>
             <Typography
               component="span"

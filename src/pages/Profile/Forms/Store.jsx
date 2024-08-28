@@ -1,7 +1,7 @@
 import React from 'react'
 import NoImage from '/petImg/NoImage.jfif'
 import NoCode from '/petImg/NoCode.webp'
-import { Button, TextField, Typography } from '@mui/material'
+import { Box, Button, FormControl, FormControlLabel, FormLabel, MenuItem, Radio, RadioGroup, TextField, Typography } from '@mui/material'
 import { InputFile } from '../../../components'
 
 function Store() {
@@ -38,10 +38,25 @@ function Form() {
     return (
         <form className='flex flex-col gap-2'>
             <TextField variant="outlined" size='small' label="Pet Name"/>
-            <TextField variant="outlined" size='small' label="Type"/>
+            <TextField select variant="outlined" size='small' label="Type">
+                <MenuItem value="dog">Dog</MenuItem>
+                <MenuItem value="cat">Cat</MenuItem>
+            </TextField>
             <TextField variant="outlined" size='small' label="Breed"/>
             <TextField variant="outlined" size='small' label="Age"/>
-            <TextField variant="outlined" size='small' label="Neutered"/>
+            <FormControl>
+                <Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2}}>
+                    <FormLabel id="allergies-label">Neutered</FormLabel>
+                    <RadioGroup
+                        aria-labelledby="allergies-label"
+                        name="allergies-group"
+                        sx={{display: 'flex', flexDirection: 'row'}}
+                    >
+                        <FormControlLabel value="yes" control={<Radio />} label="Yes" />
+                        <FormControlLabel value="no" control={<Radio />} label="No" />
+                    </RadioGroup>
+                </Box>
+            </FormControl>
             <TextField variant="outlined" size='small' label="Personality"/>
             <TextField variant="outlined" size='small' label="Open for play dates"/>
             <TextField variant="outlined" size='small' label="Bio"/>

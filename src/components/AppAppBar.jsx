@@ -108,7 +108,7 @@ function Landmark() {
           alt="logo of sitemark"
       />
       <Button component={Link} to="/" sx={{fontSize: 21, fontWeight: 'bold'}}>
-        Whisker Ways
+        Wisker Ways
       </Button>
     </Box>
   )
